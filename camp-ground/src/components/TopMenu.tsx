@@ -11,8 +11,8 @@ export default function TopMenu(){
             <Image src="/images/logo.png"
             className="ml-[10px]"
             alt="logo"
-            width={60}
-            height={60}/>
+            width={70}
+            height={70}/>
             <div className="ml-[60%]">
                 <TopMenuItem pageRef="/" title="Home"/>
                 <TopMenuItem pageRef="/booking" title="Booking"/>
