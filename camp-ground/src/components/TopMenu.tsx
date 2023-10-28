@@ -5,19 +5,26 @@ import styles from "@/styles/TopMenu.module.css"
 
 export default function TopMenu(){
     return (
-        <div className="flex justify-start fixed flex-row h-20 
+        <div className={`${styles.allFont} flex justify-between fixed flex-row h-[110px] 
         top-0 right-0 left-0 z-30 items-center text-[25px] 
-        opacity-80 bg-black text-white">
+        opacity-80 bg-black text-white font-normal`}>
             <Image src="/images/logo.png"
             className="ml-[10px]"
             alt="logo"
-            width={70}
-            height={70}/>
-            <div className="ml-[60%]">
+            width={98}
+            height={74}/>
+            <div className="flex flex-row justify-around">
                 <TopMenuItem pageRef="/" title="Home"/>
+                <TopMenuItem pageRef="/about" title="About"/>
                 <TopMenuItem pageRef="/booking" title="Booking"/>
-                <TopMenuItem pageRef="/booking" title="About us"/>
-                <TopMenuItem pageRef="/booking" title="Sign in"/>
+                <TopMenuItem pageRef="/information" title="Information"/>
+            </div>
+            <div className="flex relative">
+                <Image src="/images/signin.jpg"
+                className="mr-[10px] rounded-full backdrop-brightness-200"
+                alt="signin"
+                width={88}
+                height={60}/>
             </div>
         </div>
     )

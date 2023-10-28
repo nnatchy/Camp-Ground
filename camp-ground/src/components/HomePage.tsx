@@ -1,37 +1,61 @@
 'use client'
 import Image from "next/image";
 import styles from "@/styles/HomePage.module.css"
-import { useState,useEffect } from "react";
+import { useState } from "react";
+import Banner from "./Banner";
+import Carousel from 'react-bootstrap/Carousel';
 
 export default function HomePage(){
+    
+    const[index,setIndex] = useState(0);
     const covers = [
         "/images/banner.jpg",
         "/images/banner2.jpg",
         "/images/banner3.jpg",
         "/images/banner4.jpg",
+        "/images/banner5.jpg"
     ];
-    const [index,setIndex] = useState(0);
-
-    useEffect(() => {
-        // Use a setTimeout to change the state after 5 seconds
-        const timer = setTimeout(() => {
-          setIndex((index+1)%4);
-        }, 5000); // 5000 milliseconds = 5 seconds
-    
-        // Cleanup the timer when the component unmounts
-        return () => clearTimeout(timer);
-      }, [index]);
 
     return (
-        <div className={`${styles.allFont} flex justify-center items-center relative w-screen h-screen`}>
-            <Image src={covers[index]}
-            alt="vaccine banner" 
+        <div className={`${styles.allFont} flex justify-center items-center 
+        relative w-screen h-screen text-white block`}>
+            <Image src="/images/backgroundHome.jpg" 
+            className="saturate-100"
+            alt="Background" 
             fill={true}/>
-            <div>
-                <Image src="/images/circle.png"
-                alt="circle"
-                width={100}
-                height={100}/>
+            <div className="relative">
+                <div className="flex flex-row justify-center"> 
+                    <h1 className="text-[86px]">CAMP GROUND</h1> 
+                </div> 
+                <div className="flex flex-row justify-center text-[28px] mt-[-20px]">
+                    <p>__</p>
+                    <h3 className={styles.componentFont}>Your Gateway to Nature's Playground</h3> 
+                    <p>__</p>
+                </div>
+                <div className="mt-[25px] flex flex-row items-center">
+                    <Image src="/images/left_arrow.png"
+                        className="w-[30px] h-[47px] transition-transform transform 
+                        hover:scale-[1.155] duration-300"
+                        onClick={() => {setIndex(index+4);}}
+                        alt="left_arrow"
+                        width={1000}
+                        height={100}/>
+                
+                    <Image src={covers[index%5]}
+                    alt="Banner"
+                    className="w-[1009px] h-[381px] rounded-[30px] flex flex-row ml-[10px]"
+                    width={1000}
+                    height={1000}/>
+
+
+                    <Image src="/images/right_arrow.png"
+                        className="w-[30px] h-[47px] ml-[10px] transition-transform transform 
+                        hover:scale-[1.155] duration-300"
+                        onClick={() => {setIndex(index+1);}}
+                        alt="left_arrow"
+                        width={1000}
+                        height={100}/>
+                </div>
             </div>
         </div>
     )

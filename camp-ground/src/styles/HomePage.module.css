@@ -1,5 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Mali&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Monserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Kanit:wght@300&display=swap');
 
-.allFiont {
-    font-family: Mali;
+.allFont {
+    font-family: Montserrat;
+}
+
+.componentFont{
+    font-family: Kanit;
+    font-weight: 300;
 }
