@@ -19,12 +19,13 @@ export default function TopMenu(){
                 <TopMenuItem pageRef="/booking" title="Booking"/>
                 <TopMenuItem pageRef="/information" title="Information"/>
             </div>
-            <div className="flex relative">
+            <div className="flex relative transition-transform 
+            transform hover:scale-[1.155] duration-300">
                 <Image src="/images/signin.jpg"
-                className="mr-[10px] rounded-full backdrop-brightness-200"
+                className="mr-[20px] rounded-full backdrop-brightness-200"
                 alt="signin"
-                width={88}
-                height={60}/>
+                width={70}
+                height={40}/>
             </div>
         </div>
     )
