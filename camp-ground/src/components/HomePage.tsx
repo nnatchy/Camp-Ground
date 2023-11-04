@@ -27,9 +27,9 @@ export default function HomePage(){
     return (
         <div className={`${styles.allFont} flex justify-center items-center 
         relative w-screen h-screen text-white block`}>
-            <Image src="/images/backgroundHome.jpg" 
+            <Image src="/images/homeBg.jpg" 
             className="saturate-100"
-            alt="Background" 
+            alt="Error For Load Home Background" 
             fill={true}/>
             <div className="relative">
                 <div className="flex flex-row justify-center"> 
