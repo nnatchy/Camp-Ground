@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import styles from "@/styles/HomePage.module.css"
+import styles from "@/styles/FontPage.module.css"
 import { useEffect, useState } from "react";
 
 export default function HomePage(){

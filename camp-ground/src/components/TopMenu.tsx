@@ -1,7 +1,7 @@
 import TopMenuItem from "./TopMenuItem";
 import Link from "next/link"
 import Image from "next/image";
-import styles from "@/styles/TopMenu.module.css"
+import styles from "@/styles/FontPage.module.css"
 
 export default function TopMenu(){
     return (
