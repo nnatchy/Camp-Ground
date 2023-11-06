@@ -14,7 +14,7 @@ export default function InformationPage(){
                 text-white mt-[130px] text-[64px]`}>
                     <h1>CAMPING INFO</h1>
             </div>
-            <div>
+            <div className="text-center mx-[5%]">
                 <Card/>
             </div>
         </div>
