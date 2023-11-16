@@ -6,6 +6,13 @@ export interface BookingItem {
 	vaccineDate: string;
 }
 
+export interface RegisterUser {
+	name:string;
+	email:string;
+	tel:string;
+	password:string;
+}
+
 // export interface CampItem {
 //     id: string;
 //     name: string;

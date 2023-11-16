@@ -31,13 +31,16 @@ export default async function TopMenu() {
                                 </div>
                             </Link>
                     }
-                    <div className='pl-5'>
-                        <TopMenuItem title='My Booking' pageRef='/mybooking' />
-                    </div>
+                <div className='pl-5'>
+                    <TopMenuItem title='My Booking' pageRef='/mybooking' />
+                 </div>
+                 <div className='pl-5'>
+                    <TopMenuItem title='Register' pageRef='/register' />
+                 </div>
                 </div>
-                <TopMenuItem title='Campground' pageRef='/campground' />
+                    <TopMenuItem title='Campground' pageRef='/campground' />
                 <div className='px-5'></div>
-                <TopMenuItem title='Booking' pageRef='/booking' />
+                    <TopMenuItem title='Booking' pageRef='/booking' />
                 <Image src={'/img/vaccine.png'}
                     className='ml-10 w-[100px] h-[60px]'
                     alt='logo'

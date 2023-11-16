@@ -7,12 +7,10 @@ export default function HomePage(){
     const[index,setIndex] = useState(0);
 
     useEffect(() => {
-        // Use a setTimeout to change the state after 4 seconds
         const timer = setTimeout(() => {
           setIndex(index+1);
-        }, 4000); // 4000 milliseconds = 4 seconds
+        }, 4000);
 
-        // Cleanup the timer when the component unmounts
         return () => clearTimeout(timer);
       }, [index]);
 

@@ -1,81 +1,82 @@
-"use client"
+'use client'
+import { MenuItem, Select } from "@mui/material";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/redux/store";
+import { RegisterUser } from "interfaces";
+import { registerUser } from "@/redux/features/registerSlice";
 
-import { DatePicker } from "@mui/x-date-pickers"
-import { LocalizationProvider } from "@mui/x-date-pickers"
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
-import { Select, MenuItem, FormControl, TextField, InputLabel, Button } from "@mui/material"
-import { useSearchParams } from "next/navigation";
-import { useState } from "react"
-import dayjs, { Dayjs } from "dayjs"
-import { useDispatch } from "react-redux"
-import { BookingItem } from "../../interfaces"
-import { addBooking } from "@/redux/features/bookSlice"
-import { AppDispatch } from "@/redux/store"
+export default function RegisterForm(){
+    const [name,setName] = useState<string>("");    
+    const [email,setEmail] = useState<string>("");
+    const [tel,setTel] = useState<string>("");
+    const [password,setPassword] = useState<string>("");
 
-export default function Register() {
-    const urlParams = useSearchParams()
-    const hid = urlParams.get('id')
-    const hName = urlParams.get('name')
+    const dispatch = useDispatch<AppDispatch>();
 
-    const [name, setName] = useState<string>('')
-    const [surname, setSurname] = useState<string>('')
-    const [cid, setCID] = useState<string>('')
-    const [hospitalLocation, setHospitalLocation] = useState<string>(hName ? hName : '')
-    const [vaccineDate, setVaccineDate] = useState<Dayjs | null>(null)
-
-    const dispatch = useDispatch<AppDispatch>()
-
-    const createBooking = () => {
-        if (name && cid && vaccineDate && hospitalLocation) {
-            const item: BookingItem = {
+    const registerForUser = () => {
+        if (name && email && tel && password){
+            const user: RegisterUser = {
                 name: name,
-                surname: surname,
-                cid: cid,
-                hospitalLocation: hospitalLocation,
-                vaccineDate: dayjs(vaccineDate).format('YYYY/MM/DD'),
+                email: email,
+                tel: tel,
+                password: password
             }
-            dispatch(addBooking(item))
+            dispatch(registerUser(user));
         }
     }
 
     return (
-        <div className="bg-gradient-to-r from-sky-200 via-sky-300 to-cyan-300 rounded-lg space-x-5 
-        space-y-2 px-8 py-6 flex justify-center shadow-md border-blue-800 border-[5px]">
-            <FormControl variant="filled" className="flex justify-center space-y-[30px]" fullWidth>
-                <p className="text-center text-black text-4xl font-bold">เเบบฟอร์มการจองรับวัคซีน</p>
-                <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-                <div className="flex space-x-5 text-black">
-                    <p className="pt-[20px] font-semibold text-[20px]">ชื่อ</p>
-                    <TextField type="text" variant="standard" label="First name" value={name} onChange={(value) => { setName(value.target.value); }} />
-                    <p className="pt-[20px] font-semibold text-[20px]">นามสกุล</p>
-                    <TextField type="text" variant="standard" label="Last name" value={surname} onChange={(value) => { setSurname(value.target.value); }} />
+        <div className="text-black mt-[60px] bg-slate-600 p-[10px] flex justify-center h-screen 
+        w-screen items-center">
+            <div className="w-[850px] h-[550px] bg-slate-200 rounded-2xl 
+            shadow-xl border-slate-400 border-[10px]">
+                <div className="mt-[20px] text-[40px] text-center font-bold flex justify-center">
+                    <h1 className="mt-[20px]">Register</h1>
                 </div>
-                <div className="flex space-x-5 text-black">
-                    <label className="pt-[20px] font-semibold text-[20px]">รหัสประจำตัวประชาชน</label>
-                    <TextField type="text" variant="standard" label="Citizen ID" className="w-[300px]" value={cid} onChange={(value) => { setCID(value.target.value) }} />
-                </div>
-                <div className="flex space-x-5 text-black">
-                    <p className="pt-[20px] font-semibold text-[20px]">โรงพยาบาล</p>
-                    <FormControl>
-                        <InputLabel className="pr-5">Hospital</InputLabel>
-                        <Select variant="standard" name="location" id="location" label="Hospital" className="h-[2em] w-[250px]"
-                            value={hospitalLocation} onChange={(value) => { setHospitalLocation(value.target.value); }}>
-                            <MenuItem value="Chulalongkorn Hospital"> Chulalongkorn Hospital</MenuItem>
-                            <MenuItem value="Rajavithi Hospital"> Rajavithi Hospital</MenuItem>
-                            <MenuItem value="Thammasat University Hospital"> Thammasat University Hospital</MenuItem>
-                        </Select>
-                    </FormControl>
-                </div>
-                <div className="flex space-x-5 text-black">
-                    <p className="pt-[20px] font-semibold text-[20px]">วันที่ต้องการรับวัคซีน</p>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker className="bg-white w-[200px] rounded-lg" value={vaccineDate} onChange={(value) => { setVaccineDate(value) }} />
-                    </LocalizationProvider>
-                </div>
-                <Button variant="contained" color="success" className="bg-emerald-600 h-[50px] rounded-lg w-full" onClick={createBooking}>
-                    <span className="text-lg font-bold text-[20px]">Book</span>
-                </Button>
-            </FormControl>
+                <form action="">
+                    <div className="text-[20px] ml-[60px]">
+                        <div className="flex pt-[20px] space-x-[20px]">
+                            {/* First Name */}
+                            <label htmlFor="firstName">First Name</label>
+                            <input type="text" name="name" className="rounded-lg indent-2 
+                            ring-1 ring-gray-600 bg-neutral-100 hover:bg-white ml-[20px]" placeholder="Your First Name"
+                            value={name} onChange={(e)=>{setName(e.target.value)}}/>
+                            {/* Email */}
+                            <label htmlFor="email">email</label>
+                            <input type="email" name="email" className="rounded-lg indent-2 
+                            ring-1 ring-gray-600 bg-neutral-100 hover:bg-white ml-[20px]" placeholder="Your Email"
+                            value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                        </div>
+
+                        <div className="pt-[30px] space-x-[20px] flex items-center">
+                            {/* Telephone */}
+                            <label htmlFor="tel">tele</label>
+                            <input type="tel" name="tel" placeholder="Your Tel" 
+                            pattern="[0]{1}[0-9]{9}"
+                            className="rounded-lg indent-2 ring-1 ring-gray-600 bg-neutral-100 hover:bg-white ml-[20px]"
+                            value={tel} onChange={(e)=>{setTel(e.target.value)}}/>
+                        </div>
+
+                        <div className="pt-[20px] space-x-[20px] flex items-center">
+                            {/* Password */}
+                            <label htmlFor="password">password</label>
+                            <input type="password" name="password" placeholder="Your password" className="rounded-lg indent-2 
+                            ring-1 ring-gray-600 bg-neutral-100 hover:bg-white ml-[20px]"
+                            value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+                        </div>
+                        <div className="pt-[40px] space-x-[20px]">
+                            {/* Submit Button */}
+                            <button type="submit" className="rounded-xl bg-slate-100 text-[20px] ring-2
+                            ring-slate-600 hover:bg-white p-[5px] hover:scale-[1.15] duration-300">
+                                Booking
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
