@@ -12,19 +12,19 @@ interface Props{
 export default function CardItem({picture,name,province,country}:Props){
     return (
         <CardAction>
-            <Image className="w-[304px] h-[196px] ml-[13px] mt-[15px] rounded-t-[15px]"
+            <Image className="w-[370px] h-[230px] ml-[13px] mt-[15px] rounded-t-[15px]"
             src={picture}
             alt="theCampster"
             width={100}
             height={100}/>
 
-            <div className={`${styles.fontItim} text-[32px] text-white flex justify-center 
-            flex-row flex-wrap text-center mt-[10px]`}>
+            <div className={`${styles.componentFont} text-[25px] text-white flex justify-center 
+            flex-row flex-wrap text-center mt-[20px]`}>
                 <h1>{name}</h1>
             </div>
 
-            <div className={`${styles.fontItim} text-[32px] text-white flex justify-start
-            flex-row flex-wrap text-center basis-1/2`}>
+            <div className={`${styles.componentFont} text-[32px] text-white flex justify-start
+            flex-row flex-wrap text-center basis-1/2 mt-[15px]`}>
                 <Image className="w-[81px] h-[81px] ml-[20px] mt-[15px] rounded-t-[15px]"
                 src="/images/location.png"
                 alt="theCampster"

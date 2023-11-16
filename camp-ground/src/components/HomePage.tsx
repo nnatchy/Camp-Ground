@@ -28,17 +28,18 @@ export default function HomePage(){
         <div className={`${styles.allFont} flex justify-center items-center 
         relative w-screen h-screen text-white block`}>
             <Image src="/images/homeBg.jpg" 
-            className="saturate-100"
+            className="saturate-100 opacity-80"
             alt="Error For Load Home Background" 
             fill={true}/>
             <div className="relative">
                 <div className="flex flex-row justify-center"> 
                     <h1 className="text-[86px]">CAMP GROUND</h1> 
                 </div> 
-                <div className="flex flex-row justify-center text-[28px] mt-[-20px]">
-                    <span className="mb-[10px]">__</span>
-                    <h3 className={styles.componentFont}>Your Gateway to Nature's Playground</h3> 
-                    <span className="mb-[10px]">__</span>
+                <div className={`${styles.allFont} flex flex-row justify-center text-[28px] 
+                mt-[-20px] items-center`}>
+                    <span className="mb-[22px] mr-[10px]">__</span>
+                    <span>Your Gateway to Nature's Playground</span>
+                    <span className="mb-[22px] ml-[10px]">__</span>
                 </div>
                 <div className="mt-[25px] flex flex-row items-center">
                     <Image src="/images/left_arrow.png"
