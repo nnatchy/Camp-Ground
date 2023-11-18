@@ -26,7 +26,7 @@ export default function HomePage(){
         <div className={`${styles.allFont} flex justify-center items-center 
         relative w-screen h-screen text-white block`}>
             <Image src="/images/homeBg.jpg" 
-            className="saturate-100 opacity-80"
+            className="saturate-100 opacity-60"
             alt="Error For Load Home Background" 
             fill={true}/>
             <div className="relative">

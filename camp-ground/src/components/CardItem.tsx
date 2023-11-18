@@ -17,13 +17,13 @@ interface Props{
 export default function CardItem({id,picture,name,address,province,district,postalCode,tel}:Props){
     function onCardAction(event:React.SyntheticEvent){
         if (event.type == "mouseover"){
-            event.currentTarget.classList.remove("mt-[50px]");
+            event.currentTarget.classList.remove("mt-[10px]");
             event.currentTarget.classList.add("mt-[20px]");
             event.currentTarget.classList.add("shadow-2xl");
             event.currentTarget.classList.add("shadow-white");
         } else {
             event.currentTarget.classList.remove("mt-[20px]");
-            event.currentTarget.classList.add("mt-[50px]");
+            event.currentTarget.classList.add("mt-[10px]");
             event.currentTarget.classList.remove("shadow-2xl");
             event.currentTarget.classList.remove("shadow-white");
         }
@@ -70,7 +70,7 @@ export default function CardItem({id,picture,name,address,province,district,post
                             </div>
                             <Link href={`/booking?id=${id}&name=${name}`}>
                                 <button className="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize 
-                                text-white shadow shadow-black/60 duration-300" 
+                                text-white shadow shadow-black/60 duration-300 mt-[10px]" 
                                 onMouseOver={(e)=>onCardAction(e)}
                                 onMouseOut={(e)=>onCardAction(e)}>
                                     Booking
