@@ -5,10 +5,10 @@ export default async function CampgroundCatalog({ campJson }: { campJson: Object
     const campJsonReady = await campJson;
 
     return (
-        <div className="block">
-            <div className="flex flex-wrap mx-2 mt-3">
+        <div>
+            <div className="flex flex-row flex-wrap justify-center space-x-[20px]">
                 {campJsonReady.data.map((campItem: Object) => (
-                    <div key={campItem.id} className="w-1/3 px-2 my-7">
+                    <div key={campItem.id} className="w-[100%] sm:w-[50%] md:w-[50%] lg:w-[30%]">
                         <CardItem  id={campItem.id} picture={campItem.picture} name={campItem.name} 
                         address={campItem.address} province={campItem.province} district={campItem.district} 
                         postalCode={campItem.postalcode} tel={campItem.tel}/>
@@ -16,6 +16,5 @@ export default async function CampgroundCatalog({ campJson }: { campJson: Object
                 ))}
             </div>
         </div>
-
     )
 }

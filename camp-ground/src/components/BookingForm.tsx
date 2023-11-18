@@ -5,8 +5,11 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers"
 import { AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs"
 import { MenuItem, Select } from "@mui/material"
 import BookingInstruction from "./BookingInstruction"
+// import { useSearchParams } from "next/navigation"
 
 export default function BookingForm(){
+    // const urlParams = useSearchParams();
+    // const hospitalName = urlParams.get('name');
 
     return (
         <div className={`${styles.campgroundFont} relative w-screen h-screen`}>
@@ -38,30 +41,30 @@ export default function BookingForm(){
                             </div>
                             
                             <div className="mt-[20px]">
-                                <label htmlFor="name" className="ml-[15px] block text-[12px] w-full opacity-60">
+                                <label htmlFor="cName" className="ml-[15px] block text-[12px] w-full opacity-60">
                                     Campground Name
                                 </label>
                                 <input className="w-full mt-[5px] bg-white text-[15px] p-[10px] 
                                 rounded-full indent-2 bg-white" 
-                                type="text" id="name" placeholder="name" value="Guncv Pattaya Campground" readOnly/>
+                                type="text" id="cName" placeholder="Camp ground name" value="Guncv Pattaya Campground" readOnly/>
                             </div>
 
                             <div className="flex flex-row justify-start flex-wrap mt-[20px]">
 
                                 <div className="w-[45%]">
-                                    <label htmlFor="name" className="ml-[15px] block text-[12px] w-full opacity-60">
+                                    <label htmlFor="number" className="ml-[15px] block text-[12px] w-full opacity-60">
                                         How Many People ?
                                     </label>
                                     <input className="w-full mt-[5px] bg-white text-[15px] p-[10px] 
                                     rounded-full indent-2 bg-white" 
-                                    type="number" min={1} max={5} defaultValue={1} id="name" placeholder="name" value="Guncv Pattaya Campground"/>
+                                    type="number" min={1} max={5} defaultValue={1} id="number" placeholder="number" required/>
                                 </div>
 
                                 <div className="ml-[40px]">
-                                    <label htmlFor="name" className="ml-[15px] block text-[12px] w-full opacity-60">
+                                    <label htmlFor="duration" className="ml-[15px] block text-[12px] w-full opacity-60">
                                         Duration
                                     </label>
-                                    <Select name="hospital" className={`${styles.campgroundFont} indent-2 items-center text-[15px]  w-[240px] h-[40px] 
+                                    <Select name="duration" className={`${styles.campgroundFont} indent-2 items-center text-[15px]  w-[240px] h-[40px] 
                                     bg-white rounded-full mt-[5px]`} >
                                         <MenuItem value="Chula" className={`${styles.campgroundFont}`}>1 day</MenuItem>
                                         <MenuItem value="Rajavithi" className={styles.campgroundFont}>2 days</MenuItem>

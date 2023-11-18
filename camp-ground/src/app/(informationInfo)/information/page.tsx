@@ -11,9 +11,16 @@ export default async function CampGround() {
   return (
     <main>
         <div>
+            <div className="w-screen h-screen fixed inset-0 bg-cover bg-center z-0">
+                <Image
+                src="/images/sky.jpg"
+                alt="Sky Background"
+                fill={true}/>
+            </div>
             <Suspense fallback={
                     <div className="w-screen h-screen"> 
-                    <p className={`${styles.allFont} relative text-[40px] font-bold text-center mt-[130px]`}>Loading...</p>
+                    <p className={`${styles.allFont} relative text-[40px] font-bold 
+                    text-center mt-[130px]`}>Loading...</p>
                     <LinearProgress />
                     </div>
                     }>
@@ -21,8 +28,7 @@ export default async function CampGround() {
                         text-black mt-[130px] text-[80px]`}>
                             <h1>CAMPING INFO</h1>
                     </div>
-                    <div className="text-center mx-[5%] flex justify-start 
-                    flex-row flex-wrap w-screen h-screen">
+                    <div className="w-screen h-screen mt-[30px]">
                         <CampgroundCatalog campJson={campgrounds}/>
                     </div>
             </Suspense>

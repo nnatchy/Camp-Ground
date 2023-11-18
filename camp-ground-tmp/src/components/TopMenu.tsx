@@ -23,7 +23,7 @@ export default async function TopMenu() {
                             </div>
                         </Link>
                             : <Link href="/api/auth/signin" >
-                                <div className='    flex items-center font-bold align-middle pr-2 
+                                <div className='flex items-center font-bold align-middle pr-2 
         text-md transition-transform transform hover:scale-[1.155] 
         duration-300 text-white'>
                                     Sign-In
