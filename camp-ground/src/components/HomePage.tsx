@@ -30,7 +30,7 @@ export default function HomePage(){
             alt="Error For Load Home Background" 
             fill={true}/>
             <div className="relative">
-                <div className="flex flex-row justify-center"> 
+                <div className=" flex flex-row justify-center"> 
                     <h1 className="text-[86px]">CAMP GROUND</h1> 
                 </div> 
                 <div className={`${styles.allFont} flex flex-row justify-center text-[28px] 
