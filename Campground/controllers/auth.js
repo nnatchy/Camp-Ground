@@ -6,6 +6,12 @@ const User = require("../models/User");
 exports.register = async (req, res, next) => {
   try {
     const { name, email, tel, password, role } = req.body;
+    const availUser = await User.findOne({email})
+    // if (email == availUser.email) {
+    //   return res
+    //     .status(400)
+    //     .json({ success: false, msg: "Email already existed" });
+    // }
     const user = await User.create({
       name,
       email,
