@@ -30,7 +30,6 @@ export default function AddCampgroundForm() {
         }
         revalidateTag("campgrounds")
         redirect("/campground")
-
     }
 
     return (
@@ -38,6 +37,12 @@ export default function AddCampgroundForm() {
 		border-[#21628d] hover:border-[#3ce7e4] rounded-lg space-y-2 px-10 py-5 mt-10 border-4 bg-white
          transform transition-colors duration-300">
             <div className="text-xl text-gray-700 font-bold">Add Campground Form</div>
+            <div className="flex items-center w-full my-2">
+                <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="name">Campground name</label>
+                <input type="text" required id="name" name="name" placeholder="Campground name"
+                    className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                    focus:outline-none focus:border-blue-400 transition duration-300" />
+            </div>
             <div className="flex items-center w-full my-2">
                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="name">Campground name</label>
                 <input type="text" required id="name" name="name" placeholder="Campground name"
