@@ -7,7 +7,6 @@ import { Link } from '@mui/material'
 export default async function TopMenu() {
 
     const session = await getServerSession(authOptions)
-
     return (
         <div className='flex justify-between'>
 
