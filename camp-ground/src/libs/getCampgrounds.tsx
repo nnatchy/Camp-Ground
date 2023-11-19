@@ -1,9 +1,12 @@
-export default async function getCampgrounds() {
-    await new Promise((resolve) => setTimeout(resolve, 8000));
+import { apiBackUrl } from "../../constants";
 
-    const response = await fetch("http://localhost:5000/api/v1/campgrounds");
-    if (!response){
-        throw ("Error to fetch campground data");
+export default async function getCampgrounds() {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    const response = await fetch(`${apiBackUrl}/campgrounds`, {next: {tags: ['campgrounds']}})
+
+    if (!response.ok) {
+        throw new Error("Failed to fetch campgrounds' data from backend");
     }
-    return response.json()
+
+    return await response.json();
 }
