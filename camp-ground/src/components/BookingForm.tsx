@@ -12,28 +12,22 @@ import { addBooking } from "@/redux/features/bookSlice"
 import { AppDispatch } from "@/redux/store"
 import dayjs,{ Dayjs } from "dayjs"
 import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
-interface Props{
-    cid:string
-    picture:string
-    name:string
-    address:string
-    district:string
-    province:string
-    postalCode:string
-    tel:string
-}
-
-export default function BookingForm({cid,picture,name,address,district,province,postalCode,tel}: Props){
+export default function BookingForm(){
     const {data:session} = useSession();
     const [campgroundDate,setCampgroundDate] = useState<Dayjs|null>(null);
     const [people,setPeople] = useState<number|null>(1);
     const [duration,setDuration] = useState<string|null>(null);
     const router = useRouter();
-
+    const urlParams = useSearchParams();
+    const id = urlParams.get('id');
+    const name = urlParams.get('name');
     const dispatch = useDispatch<AppDispatch>();
     
+    if (!name) return null;
+    if (!id) return null;
+
     const handleInputChange = (e:any) => {
         const value = e.target.value;
         if (!isNaN(value)){
@@ -43,20 +37,14 @@ export default function BookingForm({cid,picture,name,address,district,province,
     const createBooking = () => {
         if (campgroundDate && people && duration) {
             const item: CampgroundItem = {
-                campgroundId: cid,
-                campgroundName: name,
-                campgroundAddress: address,
-                campgroundDistrict: district,
-                campgroundProvince: province,
-                campgroundPostalCode: postalCode,
-                campgroundTel: tel,
-                campgroundPicture: picture,
+                campgroundId:id,
+                campgroundName:name,
                 duration: duration,
                 bookingDate: dayjs(campgroundDate).format('YYYY/MM/DD'),
                 people: people
             }
             dispatch(addBooking(item))
-            router.back();
+            router.replace("/information");
         }
     }
 

@@ -4,7 +4,10 @@ export interface CampgroundItem{
     campgroundAddress:string
     campgroundDistrict:string
     campgroundProvince:string
-    campgroundProtalCode:string
+    campgroundPostalCode:string
     campgroundTel:string
     campgroundPicture:string
+    duration:string
+    bookingDate:string
+    people:number
 }
