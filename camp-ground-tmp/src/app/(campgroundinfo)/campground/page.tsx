@@ -6,7 +6,7 @@ import { LinearProgress } from "@mui/material";
 import { getServerSession } from "next-auth";
 import getUserProfile from "@/libs/getUserProfile";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import AddCampGroundForm from "@/components/AddCampGroundForm";
+import AddCampGroundForm from "@/components/admin/AddCampGroundForm";
 
 export default async function CampGround() {
   const campgrounds = getCampgrounds();
@@ -28,10 +28,13 @@ export default async function CampGround() {
         </div>
       }>
         <div className="flex flex-wrap justify-center">
-          <CampGroundCatalog campJson={campgrounds}/>
+          <CampGroundCatalog campJson={campgrounds} />
         </div>
         {
-          (profile?.data.role == "admin") ? <AddCampGroundForm/> : null
+          (profile?.data.role == "admin") ?
+            <AddCampGroundForm />
+            :
+            null
         }
       </Suspense>
     </main>
