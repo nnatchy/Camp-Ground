@@ -1,15 +1,52 @@
 'use client'
 import styles from "@/styles/FontPage.module.css"
 import Image from "next/image"
+import { CampgroundItem } from "@/interface"
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers"
 import { AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs"
 import { MenuItem, Select } from "@mui/material"
 import BookingInstruction from "./BookingInstruction"
-// import { useSearchParams } from "next/navigation"
+import { useDispatch } from "react-redux"
+import { useState } from "react"
+import { addBooking } from "@/redux/features/bookSlice"
+import { AppDispatch } from "@/redux/store"
+import dayjs,{ Dayjs } from "dayjs"
+import { useSession } from "next-auth/react"
+import { useRouter, useSearchParams } from "next/navigation"
 
 export default function BookingForm(){
-    // const urlParams = useSearchParams();
-    // const hospitalName = urlParams.get('name');
+    const {data:session} = useSession();
+    const [campgroundDate,setCampgroundDate] = useState<Dayjs|null>(null);
+    const [people,setPeople] = useState<number|null>(1);
+    const [duration,setDuration] = useState<string|null>(null);
+    const router = useRouter();
+    const urlParams = useSearchParams();
+    const id = urlParams.get('id');
+    const name = urlParams.get('name');
+    const dispatch = useDispatch<AppDispatch>();
+    
+    if (!name) return null;
+    if (!id) return null;
+
+    const handleInputChange = (e:any) => {
+        const value = e.target.value;
+        if (!isNaN(value)){
+            setPeople(value);
+        }
+    }
+    const createBooking = () => {
+        if (campgroundDate && people && duration) {
+            const item: CampgroundItem = {
+                campgroundId:id,
+                campgroundName:name,
+                duration: duration,
+                bookingDate: dayjs(campgroundDate).format('YYYY/MM/DD'),
+                people: people
+            }
+            dispatch(addBooking(item))
+            router.replace("/information");
+        }
+    }
 
     return (
         <div className={`${styles.campgroundFont} relative w-screen h-screen`}>
@@ -24,8 +61,8 @@ export default function BookingForm(){
                 <div className="w-[100%] lg:w-[40%] ml-[10%]"> 
                     <BookingInstruction/>
                 </div> 
-                <div className="w-[600px] h-[70%] bg-white rounded-[10px] opacity-80 mt-[30px] 
-                text-black bg-zinc-100 ">
+                <div className="w-[600px] h-[70%] bg-white rounded-[10px] opacity-80 mt-[70px] 
+                text-black bg-zinc-100">
                     <div className="text-black text-[30px] mt-[40px] text-center ">
                         Booking Your Campground
                     </div>
@@ -37,7 +74,7 @@ export default function BookingForm(){
                                 </label>
                                 <input className="w-full mt-[5px] bg-white text-[15px] p-[10px] 
                                 rounded-full indent-2 bg-white" 
-                                type="text" id="name" placeholder="name" value="guncv" readOnly/>
+                                type="text" id="name" placeholder="name" value={session? session.user?.name : "Dont Sign In Yet"} readOnly/>
                             </div>
                             
                             <div className="mt-[20px]">
@@ -46,7 +83,7 @@ export default function BookingForm(){
                                 </label>
                                 <input className="w-full mt-[5px] bg-white text-[15px] p-[10px] 
                                 rounded-full indent-2 bg-white" 
-                                type="text" id="cName" placeholder="Camp ground name" value="Guncv Pattaya Campground" readOnly/>
+                                type="text" id="cName" placeholder="Camp ground name" value={name} readOnly/>
                             </div>
 
                             <div className="flex flex-row justify-start flex-wrap mt-[20px]">
@@ -57,7 +94,8 @@ export default function BookingForm(){
                                     </label>
                                     <input className="w-full mt-[5px] bg-white text-[15px] p-[10px] 
                                     rounded-full indent-2 bg-white" 
-                                    type="number" min={1} max={5} defaultValue={1} id="number" placeholder="number" required/>
+                                    type="number" min={1} max={5} id="number" placeholder="number"
+                                    value={people} onChange={handleInputChange} required/>
                                 </div>
 
                                 <div className="ml-[40px]">
@@ -65,10 +103,11 @@ export default function BookingForm(){
                                         Duration
                                     </label>
                                     <Select name="duration" className={`${styles.campgroundFont} indent-2 items-center text-[15px]  w-[240px] h-[40px] 
-                                    bg-white rounded-full mt-[5px]`} >
-                                        <MenuItem value="Chula" className={`${styles.campgroundFont}`}>1 day</MenuItem>
-                                        <MenuItem value="Rajavithi" className={styles.campgroundFont}>2 days</MenuItem>
-                                        <MenuItem value="Thammasat" className={styles.campgroundFont}>3 days</MenuItem>
+                                    bg-white rounded-full mt-[5px]`} 
+                                    value={duration} onChange={(e) => { setDuration(e.target.value) }} required>
+                                        <MenuItem value="1Days" className={`${styles.campgroundFont}`}>1 day</MenuItem>
+                                        <MenuItem value="2Days" className={styles.campgroundFont}>2 days</MenuItem>
+                                        <MenuItem value="3Days" className={styles.campgroundFont}>3 days</MenuItem>
                                     </Select>
                                 </div>
                             </div>
@@ -78,14 +117,16 @@ export default function BookingForm(){
                                         Reserve Date
                                     </label>
                                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                        <DatePicker className="mt-[5px] bg-white"/>
+                                        <DatePicker className="mt-[5px] bg-white" value={campgroundDate}
+                                        onChange={(e) => {setCampgroundDate(e)}}/>
                                     </LocalizationProvider>
                                 </div>
 
 
                             <div className="pt-[40px] space-x-[20px] mt-[20px]">
                                 <button type="submit" className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white
-                                ring-slate-600 p-[5px] py-[10px] duration-300 hover:bg-indigo-800">
+                                ring-slate-600 p-[5px] py-[10px] duration-300 hover:bg-indigo-800"
+                                onClick={createBooking}>
                                     Booking Campground
                                 </button>
                             </div>

@@ -19,7 +19,7 @@ export default async function TopMenu(){
             height={74}/>
             <div className="flex flex-row justify-around">
                 <TopMenuItem pageRef="/" title="Home"/>
-                <TopMenuItem pageRef="/about" title="About"/>
+                <TopMenuItem pageRef="/mybooking" title="My Booking"/>
                 <TopMenuItem pageRef="/information" title="Information"/>
                 {
                         session ? 

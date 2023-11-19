@@ -11,11 +11,7 @@ export default async function CampGround() {
   return (
     <main>
         <div>
-            <div className="w-screen h-screen fixed inset-0 bg-cover bg-center z-0">
-                <Image
-                src="/images/sky.jpg"
-                alt="Sky Background"
-                fill={true}/>
+            <div className=" bg-slate-100 w-screen h-screen fixed inset-0 bg-cover bg-center z-0">
             </div>
             <Suspense fallback={
                     <div className="w-screen h-screen"> 

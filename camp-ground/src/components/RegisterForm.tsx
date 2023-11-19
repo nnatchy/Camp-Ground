@@ -111,7 +111,8 @@ export default function RegisterForm() {
                             {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
-                    <button className="bg-cyan-600 text-white border-2 border-cyan-600 border-opacity-100 font-semibold py-2 px-2 rounded-lg z-3 transform transition-colors duration-300 hover:bg-white hover:text-cyan-600 cursor-pointer">
+                    <button className="bg-cyan-600 text-white border-2 border-cyan-600 border-opacity-100 
+                    font-semibold py-2 px-2 rounded-lg z-3 transform transition-colors duration-300 hover:bg-white hover:text-cyan-600 cursor-pointer">
                         Register
                     </button>
                     {error && (
