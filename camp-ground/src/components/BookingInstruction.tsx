@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function BookingInstruction(){
     return (
-        <div className="md:mt-[120px]">
+        <div className="md:mt-[120px] font-bold">
             <div className="flex flex-row flex-wrap">
                 <div className="mt-[20px] text-[40px]">
                     Our Campground Booking
