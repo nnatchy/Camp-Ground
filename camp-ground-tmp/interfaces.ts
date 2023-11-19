@@ -13,16 +13,16 @@ export interface RegisterUser {
 	password:string;
 }
 
-// export interface CampItem {
-//     id: string;
-//     name: string;
-// 	address: string;
-// 	district: string;
-// 	province: string;
-// 	postalCode: string;
-// 	tel: string;
-//     picture: string
-// }
+export interface CampItem {
+    id: string;
+    name: string;
+	address: string;
+	district: string;
+	province: string;
+	postalCode: string;
+	tel: string;
+    picture: string
+}
 
 // export interface CampJson {
 //     count: number

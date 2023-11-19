@@ -4,7 +4,8 @@ import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 
 export default function AddCampgroundForm() {
-    const addCampground = async (addCampground: FormData) => {
+
+    const handleAddCampground = async (addCampground: FormData) => {
         "use server"
         const name = addCampground.get("name")
         const address = addCampground.get("address")
@@ -13,41 +14,37 @@ export default function AddCampgroundForm() {
         const postalCode = addCampground.get("postalCode")
         const tel = addCampground.get("tel")
         const picture = addCampground.get("picture")
-
+        
         try {
-            await dbConnect()
+            dbConnect();
             const campground = await Campground.create({
-                name,
-                address,
-                district,
-                province,
-                postalCode,
-                tel,
-                picture
+                name: name,
+                address: address,
+                district: district,
+                province: province,
+                postalcode: postalCode,
+                tel: tel,
+                picture: picture
             })
-        } catch (error) {
-            console.log(error)
+            console.log("Create Campground successful")
+        } catch (err) {
+            console.log("Error during creating campground: ", err)
         }
         revalidateTag("campgrounds")
         redirect("/campground")
     }
 
     return (
-        <form action={addCampground} className="flex flex-col items-center justify-center w-full h-full
+        <form action={handleAddCampground} className="flex flex-col items-center justify-center w-full h-full
 		border-[#21628d] hover:border-[#3ce7e4] rounded-lg space-y-2 px-10 py-5 mt-10 border-4 bg-white
          transform transition-colors duration-300">
             <div className="text-xl text-gray-700 font-bold">Add Campground Form</div>
+
             <div className="flex items-center w-full my-2">
                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="name">Campground name</label>
                 <input type="text" required id="name" name="name" placeholder="Campground name"
                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                    focus:outline-none focus:border-blue-400 transition duration-300" />
-            </div>
-            <div className="flex items-center w-full my-2">
-                <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="name">Campground name</label>
-                <input type="text" required id="name" name="name" placeholder="Campground name"
-                    className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                    focus:outline-none focus:border-blue-400 transition duration-300" />
+                    focus:outline-none focus:border-blue-400 transition duration-300"  />
             </div>
             <div className="flex items-center w-full my-2">
                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="address">Address</label>
@@ -77,7 +74,7 @@ export default function AddCampgroundForm() {
                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="tel">Tel.</label>
                 <input type="text" required id="tel" name="tel" placeholder="Tel."
                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                    focus:outline-none focus:border-blue-400 transition duration-300" />
+                    focus:outline-none focus:border-blue-400 transition duration-300"  />
             </div>
             <div className="flex items-center w-full my-2">
                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="picture">Picture</label>

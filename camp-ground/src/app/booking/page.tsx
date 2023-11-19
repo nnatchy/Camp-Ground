@@ -1,3 +1,4 @@
+'use client'
 import BookingForm from "@/components/BookingForm"
 import styles from "@/styles/FontPage.module.css"
 import Image from "next/image"

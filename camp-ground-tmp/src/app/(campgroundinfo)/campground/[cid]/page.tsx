@@ -4,8 +4,8 @@ import Link from "next/link";
 import getUserProfile from "@/libs/getUserProfile";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import UpdateCampGroundForm from "@/components/admin/UpdateCampGroundForm";
-import DeleteCampgroundForm from "@/components/admin/UpdateCampGroundForm";
+import UpdateCampGroundForm from "@/components/admin/UpdateCampGroundFormHard";
+import DeleteCampgroundForm from "@/components/admin/UpdateCampGroundFormHard";
 
 export default async function CampgroundDetailPage({
   params,

@@ -1,4 +1,6 @@
 import { apiBackUrl } from "@/constants";
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export default async function createCampground(
     name: string,
@@ -7,10 +9,11 @@ export default async function createCampground(
     province: string,
     postalCode: string,
     tel: string,
-    picture: string
+    picture: string,
 ) {
+
     try {
-        const response = await fetch(`${apiBackUrl}/campgrounds`, {
+        const response = await fetch(`http://localhost:5000/api/v1/campgrounds`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -25,6 +28,7 @@ export default async function createCampground(
                 picture,
             }),
         });
+        console.log(response)
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(
