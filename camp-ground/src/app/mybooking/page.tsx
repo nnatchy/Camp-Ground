@@ -30,18 +30,20 @@ export default function myBooking() {
                     </div>
                     :
                     bookingItems.map((item) => (
-                        <div className='bg-white rounded-xl w-[90%] pl-5 py-2 text-black' key={item.campgroundId}>
-                            <div className='flex font-bold text-[20px]'>Name: <span className='font-normal pl-5'>{item.campgroundName}</span></div>
-                            <div className='flex font-bold text-[30px] mb-3'>{item.duration}</div>
-                            <div className='flex font-bold text-[30px] mb-3'>{item.bookingDate}</div>
-                            <div className='flex font-bold text-[30px] mb-3'>{item.people}</div>
+                        <div className={`${styles.campgroundFont} bg-white rounded-xl w-[90%] pl-5 py-4 text-black`} 
+                        key={item.campgroundId}>
+                            <div className='flex font-bold text-[20px]'>Campground Name : 
+                            <span className='font-normal pl-5'>{item.campgroundName}</span></div>
+                            <div className='flex font-bold text-[20px]'>checkIn Date : 
+                            <span className='font-normal pl-5'>{item.checkInDate}</span></div>
+                            <div className='flex font-bold text-[20px]'>checkOut Date : 
+                            <span className='font-normal pl-5'>{item.checkOutDate}</span></div>
 
                             <button
                                 className='bg-red-500 text-white border-2 border-red-800 border-opacity-100
-                                font-semibold py-2 px-10 rounded-lg z-3
+                                font-semibold py-2 px-6 rounded-lg z-3
                                 transform transition-colors duration-300 hover:bg-rose-800  hover:border-white
-                                p-3 mt-5
-                                '
+                                p-3 mt-2'
                                 onClick={() => { dispatch(removeBooking(item)) }}
                             >Cancel Booking</button>
                         </div>
