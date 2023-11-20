@@ -8,6 +8,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import getUserProfile from "@/libs/getUserProfile";
 import AddCampGroundForm from "@/components/admin/AddCampGroundForm";
 import UpdateCampGroundFormHard from "@/components/admin/UpdateCampGroundFormHard";
+import Link from "next/link";
 
 export default async function CampGround() {
   const campgrounds = getCampgrounds();
@@ -31,6 +32,14 @@ export default async function CampGround() {
                           text-black mt-[130px] text-[80px]`}>
                               <h1>CAMPING INFO</h1>
               </div>
+              { profile?.data.role == "admin" ?
+                <div className="relative text-center text-blue-300 font-bold 
+                text-[30px] text-black duration-300 hover:scale-[1.05]">
+                  <Link href="/history">
+                  View Booking History
+                  </Link>
+                </div> : null
+              }
               <div className="flex flex-wrap justify-center">
                 <CampgroundCatalog campJson={campgrounds} />
               </div>

@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import CardItem from "./CardItem";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import getUserProfile from "@/libs/getUserProfile";
+import Link from "next/link";
 
 export default async function CampgroundCatalog({ campJson }: { campJson: Object }) {
 
