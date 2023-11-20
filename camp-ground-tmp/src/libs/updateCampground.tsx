@@ -8,30 +8,32 @@ export default async function updateCampground(
     province: string,
     postalCode: string,
     tel: string,
-    picture: string
+    picture: string,
+    token: string
 ) {
     try {
+        console.log(cid, name, address, district, province, postalCode, tel, picture, token)
+        const jsonBody = JSON.stringify({
+            "name": name,
+            "address": address,
+            "district": district,
+            "province": province,
+            "postalcode": postalCode,
+            "tel": tel,
+            "picture": picture,
+        })
         const response = await fetch(`${apiBackUrl}/campgrounds/${cid}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify({
-                name,
-                address,
-                district,
-                province,
-                postalCode,
-                tel,
-                picture,
-            }),
+            body: jsonBody,
         });
-
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(
-                `Failed to update campground: ${response.status} - ${errorData.message || "Unknown error"
-                }`
+                `Failed to update campground: ${response.status} - ${errorData.message || "Unknown error"}`
             );
         }
         return await response.json();

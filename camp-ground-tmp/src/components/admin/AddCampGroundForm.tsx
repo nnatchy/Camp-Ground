@@ -27,6 +27,7 @@ export default function AddCampgroundForm() {
                 picture: picture
             })
             console.log("Create Campground successful")
+            alert("I CREATE IT")
         } catch (err) {
             console.log("Error during creating campground: ", err)
         }

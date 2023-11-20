@@ -4,8 +4,8 @@ import Link from "next/link";
 import getUserProfile from "@/libs/getUserProfile";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import UpdateCampGroundForm from "@/components/admin/UpdateCampGroundFormHard";
-import DeleteCampgroundForm from "@/components/admin/UpdateCampGroundFormHard";
+import UpdateCampGroundForm from "@/components/admin/UpdateCampGroundForm";
+import DeleteCampgroundForm from "@/components/admin/DeleteCampGroundForm";
 
 export default async function CampgroundDetailPage({
   params,
@@ -35,7 +35,7 @@ export default async function CampgroundDetailPage({
           </div>
           <div className="text-[25px] mx-5 text-white">
             <span className="font-bold pr-4 text-[30px]">Location:</span>
-            <span>{campgroundDetail.data.address} <span>{campgroundDetail.data.province}, {campgroundDetail.data.postalcode}</span></span>
+            <span>{campgroundDetail.data.address} <span>{campgroundDetail.data.province}, {campgroundDetail.data.district}, {campgroundDetail.data.postalcode}</span></span>
             <div className="mt-6 text-[25px]">
               <span className="font-bold pr-4 text-[30px]">Tel: </span>
               <span>{campgroundDetail.data.tel}</span>
@@ -56,8 +56,8 @@ export default async function CampgroundDetailPage({
       {
         (profile?.data.role == "admin") ?
           <div>
-            <UpdateCampGroundForm />
-            <DeleteCampgroundForm />
+            <UpdateCampGroundForm cid={params.cid} token={session.user.token} />
+            <DeleteCampgroundForm cid={params.cid} token={session.user.token} />
           </div>
           :
           null
