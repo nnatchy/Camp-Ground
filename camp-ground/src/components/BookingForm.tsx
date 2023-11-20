@@ -33,7 +33,7 @@ export default function BookingForm(){
                 campgroundId:id,
                 campgroundName:name,
                 checkInDate: dayjs(checkInDate).format('YYYY/MM/DD'),
-                checkOutDate: dayjs(checkOutDate).format('YYYY/MM/DD'),
+                checkOutDate: dayjs(checkOutDate).format('YYYY/MM/DD')
             }
             dispatch(addBooking(item))
             router.replace("/information");
@@ -70,7 +70,7 @@ export default function BookingForm(){
                             </div>
                             
                             <div className="mt-[20px]">
-                                <label htmlFor="cName" className="ml-[15px] block text-[12px] w-full opacity-60">
+                                <label htmlFor="campgroundName" className="ml-[15px] block text-[12px] w-full opacity-60">
                                     Campground Name
                                 </label>
                                 <input className="w-full mt-[5px] bg-white text-[15px] p-[10px] 
@@ -85,7 +85,7 @@ export default function BookingForm(){
                                         Check In Date
                                     </label>
                                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                        <DatePicker className="mt-[5px] bg-white" value={checkInDate}
+                                        <DatePicker id={checkInDate} className="mt-[5px] bg-white" value={checkInDate}
                                         onChange={(e) => {setCheckInDate(e)}}/>
                                     </LocalizationProvider>
                                 </div>

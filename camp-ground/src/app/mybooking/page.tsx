@@ -21,8 +21,8 @@ export default function myBooking() {
                 bookingItems.length === 0 ?
                     <div className={`${styles.campgroundFont} text-2xl font-bold`}>
                         <div>
-                            <Image className="w-[400px] h-[300px] mt-[100px]"
-                            src="/images/dontKnow.jpg"
+                            <Image className="w-[400px] h-[400px] mt-[100px]"
+                            src="/images/dontKnow.png"
                             alt="Error to load picture"
                             width={1000}
                             height={1000}/>

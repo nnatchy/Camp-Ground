@@ -1,5 +1,4 @@
 import CampgroundCatalog from "@/components/CampgroundCatalog";
-import Image from "next/image";
 import getCampgrounds from "@/libs/getCampgrounds";
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
@@ -8,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import getUserProfile from "@/libs/getUserProfile";
 import AddCampGroundForm from "@/components/admin/AddCampGroundForm";
+import UpdateCampGroundFormHard from "@/components/admin/UpdateCampGroundFormHard";
 
 export default async function CampGround() {
   const campgrounds = getCampgrounds();
@@ -38,32 +38,12 @@ export default async function CampGround() {
                 (profile?.data.role == "admin") ?
                   <div className="my-[40px] mx-[20px]">
                     <AddCampGroundForm/>
-                    {/* <UpdateCampgroundForm campJson={campgrounds} /> */}
+                    <UpdateCampGroundFormHard campJson={campgrounds}/>
                   </div>
                   :
                   null
-              }
+              } 
             </Suspense>
-            {/* <Suspense fallback={
-                    <div className="w-screen h-screen"> 
-                    <p className={`${styles.allFont} relative text-[40px] font-bold 
-                    text-center mt-[130px]`}>Loading...</p>
-                    <LinearProgress />
-                    </div>
-                    }>
-                    <div>
-                      <div className={`${styles.allFont} text-center relative 
-                          text-black mt-[130px] text-[80px]`}>
-                              <h1>CAMPING INFO</h1>
-                      </div>
-                      <div className="w-screen h-screen mt-[30px]">
-                          <CampgroundCatalog campJson={campgrounds}/>
-                      </div>
-                      <div className="flex fle">
-                        <AddCampgroundForm/>
-                      </div>
-                    </div>
-            </Suspense> */}
         </div>
     </main>
   )

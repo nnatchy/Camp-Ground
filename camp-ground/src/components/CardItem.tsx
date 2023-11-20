@@ -2,8 +2,10 @@
 import Image from "next/image"
 import styles from "@/styles/FontPage.module.css"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 interface Props{
+    role:string
     id:string
     picture:string
     name:string
@@ -14,7 +16,9 @@ interface Props{
     tel:string
 }
 
-export default function CardItem({id,picture,name,address,province,district,postalCode,tel}:Props){
+export default function CardItem({role,id,picture,name,address,province,district,postalCode,tel}:Props){
+    const router = useRouter();
+
     function onCardAction(event:React.SyntheticEvent){
         if (event.type == "mouseover"){
             event.currentTarget.classList.remove("mt-[10px]");
@@ -32,7 +36,12 @@ export default function CardItem({id,picture,name,address,province,district,post
     return (
             <div className={`${styles.campgroundFont} grid grid-cols-1 gap-5 w-[500px] rounded-[10px] my-[50px]`}>
                 <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow 
-                hover:shadow-xl hover:shadow-black/30">
+                hover:shadow-xl hover:shadow-black/30"
+                onClick={(e) => {
+                    e.preventDefault(); 
+                    if (role == "admin") {
+                        router.push(`/information/${id}`)
+                    }}}>
                     
                     <div className="h-96 w-72">
                         <Image className="rounded-[20px] h-full w-full object-cover transition-transform duration-500" 
@@ -68,14 +77,14 @@ export default function CardItem({id,picture,name,address,province,district,post
                                     <p>{`${tel}`}</p>
                                 </div>
                             </div>
-                            <Link href={`/booking?id=${id}&name=${name}`}>
-                                <button className="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize 
+                            <button className="rounded-full bg-neutral-900 py-2 px-3.5 font-com text-sm capitalize 
                                 text-white shadow shadow-black/60 duration-300 mt-[10px]" 
                                 onMouseOver={(e)=>onCardAction(e)}
-                                onMouseOut={(e)=>onCardAction(e)}>
-                                    Booking
-                                </button>
-                            </Link>
+                                onMouseOut={(e)=>onCardAction(e)}
+
+                                onClick={(e)=>{e.stopPropagation(); router.push(`/booking?id=${id}&name=${name}`)}}>
+                                Booking
+                            </button>
                         </div>
                 </div>
             </div>
