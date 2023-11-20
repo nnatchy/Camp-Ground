@@ -14,7 +14,7 @@ export default async function CampGround() {
   const session = await getServerSession(authOptions);
   if (!session || !session.user.token) return null;
   const profile = session ? await getUserProfile(session.user?.token) : null;
-
+  console.log(session.user.token)
   return (
     <main>
         <div>

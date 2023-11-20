@@ -4,25 +4,29 @@ import { dbConnect } from "@/db/dbConnect"
 import Booking from "@/db/models/Booking"
 import { getServerSession } from "next-auth"
 import { revalidateTag } from "next/cache"
-import { redirect } from "next/navigation"
+import { redirect, useSearchParams } from "next/navigation"
+import createBooking from "@/libs/createBooking"
 
-export async function BookingAction(addBooking: FormData){
-    const session = getServerSession(authOptions);
-    const campgroundName = addBooking.get("campgroundName")
-    const checkInDate = addBooking.get("checkInDate")
-    const checkOutDate = addBooking.get("checkOutDate")
-        
+
+export async function BookingAction(cid: string, bookingDate: string, checkoutDate: string){
+    const session = await getServerSession(authOptions);
+    if (!session) return;
+    if (!cid) return;
+    const token = session.user?.token
+    console.log(token)
     try {
-        dbConnect();
-        const booking = await Booking.create({
-            bookingDate:checkInDate,
-            checkoutDate:checkOutDate,
-            user: session.user?.id,
-            campground : campgroundName
-        })
-        console.log("Create Campground successful")
+        console.log(cid, bookingDate, checkoutDate)
+        const res = await createBooking(cid, bookingDate, checkoutDate, token)
+        // dbConnect();
+        // const booking = await Booking.create({
+        //     bookingDate:checkInDate,
+        //     checkoutDate:checkOutDate,
+        //     user: session.user?.id,
+        //     campground : campgroundName
+        // })
+        console.log("Create Booking successful")
     } catch (err) {
-         console.log("Error during creating campground: ", err)
+         console.log("Error during creating booking: ", err)
     }
     revalidateTag("bookings")
     redirect("/information")
