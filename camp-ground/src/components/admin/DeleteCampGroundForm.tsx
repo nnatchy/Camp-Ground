@@ -1,18 +1,11 @@
 'use client'
-import deleteCampground from "@/libs/deleteCampground"
-import { FormEvent} from "react"
-import { useRouter } from "next/navigation"
+import { HandleDeleteCampground } from "./handler/HandleDeleteCampground"
 
 export default function DeleteCampgroundForm({ cid, token }: { cid: string, token: string }) {
 
-    const router = useRouter();
-
-    const handleDeleteCampground = async (event: FormEvent<HTMLFormElement>) => {
+    const handleDeleteCampground = async () => {
         try {
-            const res = await deleteCampground(cid, token)
-            alert('Delete Successful YAYA')
-            console.log('Delete Campground successful')
-            router.back()
+            await HandleDeleteCampground(cid, token)
         } catch (err) {
             console.log(err)
         }
@@ -20,7 +13,7 @@ export default function DeleteCampgroundForm({ cid, token }: { cid: string, toke
     }
 
     return (
-        <form onSubmit={handleDeleteCampground} className="flex flex-col items-center justify-center w-full h-full
+        <form action={handleDeleteCampground} className="flex flex-col items-center justify-center w-full h-full
 		border-[#21628d] hover:border-[#3ce7e4] rounded-lg space-y-2 px-10 py-5 mt-10 border-4 bg-white
          transform transition-colors duration-300">
             <div className="text-xl text-gray-700 font-bold">Delete Campground</div>

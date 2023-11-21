@@ -6,10 +6,7 @@ import { redirect } from "next/navigation"
 import updateCampground from "@/libs/updateCampground"
 
 
-export async function HandleUpdateCampground(cid: string, name: string, address: string, district: string, province: string, postalCode: string, tel: string, picture: string){
-    const session = await getServerSession(authOptions);
-    if (!session || !session.user || !session.user.token) return;
-    const token = session.user?.token
+export async function HandleUpdateCampground(cid: string, name: string, address: string, district: string, province: string, postalCode: string, tel: string, picture: string, token: string){
     console.log(token)
     try {
         const res = await updateCampground(cid, name, address, district, province, postalCode, tel, picture, token)

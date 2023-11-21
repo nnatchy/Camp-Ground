@@ -6,7 +6,7 @@ import styles from "@/styles/FontPage.module.css"
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import getUserProfile from "@/libs/getUserProfile";
-import AddCampGroundForm from "@/components/admin/AddCampGroundForm";
+import CreateCampGroundForm from "@/components/admin/CreateCampGroundForm";
 import UpdateCampGroundFormHard from "@/components/admin/UpdateCampGroundFormHard";
 import Link from "next/link";
 
@@ -46,7 +46,7 @@ export default async function CampGround() {
               {
                 (profile?.data.role == "admin") ?
                   <div className="my-[40px] mx-[20px]">
-                    <AddCampGroundForm/>
+                    <CreateCampGroundForm userToken={session.user.token}/>
                     <UpdateCampGroundFormHard campJson={campgrounds}/>
                   </div>
                   :

@@ -1,7 +1,7 @@
 'use client'
 import { FormEvent, useState } from "react"
 import { redirect, useRouter } from "next/navigation";
-import { HandleUpdateCampground } from "./HandleUpdateCampground";
+import { HandleUpdateCampground } from "./handler/HandleUpdateCampground";
 
 interface Props {
     cid: string
@@ -36,7 +36,7 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                 setError("Postal code cannot be more than 5 digits");
                 return
             }
-            HandleUpdateCampground(cid, name, address, district, province, postalCode, tel, picture);
+            await HandleUpdateCampground(cid, name, address, district, province, postalCode, tel, picture, token);
         } catch (err) {
             setError("Updated Failed")
             console.log(err)
