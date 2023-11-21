@@ -23,13 +23,13 @@ export default async function CampGround() {
             <Suspense fallback={
               <div className="w-screen h-screen"> 
                 <p className={`${styles.allFont} relative text-[40px] font-bold 
-                text-center mt-[130px]`}>Loading...</p>
+                text-center mt-[130px] text-white`}>Loading...</p>
                 <LinearProgress />
               </div>
             }>
               <div>
                 <div>
-                  <Image className="w-screen h-[120%] rounded-b-3xl"
+                  <Image className="w-screen h-[120%]"
                   src="/images/informationBg.jpg"
                   alt="Error to down load background"
                   width={1000}
@@ -44,8 +44,9 @@ export default async function CampGround() {
                     <p>memories are made under starlit skies. </p> 
                   </div>
                 </div>
-                <div className="flex flex-row flex-wrap justify-center w-screen mt-[80px] mx-[20px]
-                space-x-[70px]">
+
+                <div className="flex flex-row flex-wrap justify-center w-screen mt-[80px]
+                space-x-[70px] text-white">
                   <PromoteCard picture="✨" topic="Traveler-Friendly" detail="Enter your details with ease, 
                   starting with your name. Our user-friendly form 
                   ensures a seamless booking experience."/>
@@ -64,21 +65,33 @@ export default async function CampGround() {
                   width={1000}
                   height={1000}/>
                 </div>
-                <div className={`${styles.Roboto} text-center font-bold text-[3.5vw]`}>
+
+                <div className={`${styles.Roboto} text-center text-white font-bold text-[3.5vw]`}>
                   <h1>Let Explore Campground {`&`}</h1>
                   <h1>Date That You Want</h1>
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-center">
-                <CampgroundCatalog campJson={campgrounds} />
+              <div className="w-screen px-[50px] mb-[80px]">
+                <div className="mt-[50px] border-white border-[3px] rounded-3xl w-full">
+                  <CampgroundCatalog campJson={campgrounds} />
+                </div>
               </div>
+
               {
                 (profile?.data.role == "admin") ?
-                  <div className="my-[40px] mx-[20px]">
+                <div>
+                  <div className={`${styles.Roboto} text-center text-white font-bold text-[3.5vw]`}>
+                    <h1>👑 Hello Admin 👑</h1>
+                    <div className = "mt-[20px] text-[1vw] text-gray-100 opacity-80 font-light ">
+                    <p>You Can Be Create Campground Here !!</p>
+                    </div>
+                  </div>
+                  <div className="my-[60px] px-[90px]">
                     <CreateCampGroundForm userToken={session.user.token}/>
                     {/* <UpdateCampGroundFormHard campJson={campgrounds}/> */}
                   </div>
+                </div>
                   :
                   null
               } 

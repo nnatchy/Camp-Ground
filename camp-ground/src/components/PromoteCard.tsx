@@ -24,7 +24,7 @@ export default function PromoteCard({picture,topic,detail}: Props){
     }
 
     return (
-        <div className={`${styles.campgroundFont} w-[200px] h-[200px] rounded-xl duration-300`}
+        <div className={`${styles.campgroundFont} w-[200px] h-[200px] rounded-xl`}
         onMouseOver={onCardAction}
         onMouseOut={onCardAction}>
             <div className="text-center text-[100px]">

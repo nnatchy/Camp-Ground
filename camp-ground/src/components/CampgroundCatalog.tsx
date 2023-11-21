@@ -13,7 +13,7 @@ export default async function CampgroundCatalog({ campJson }: { campJson: Object
 
     return (
         <div>
-            <div className="flex flex-row w-screen flex-wrap justify-center space-x-[20px]">
+            <div className="flex flex-row flex-wrap justify-center gap-4">
                 {campJsonReady.data.map((campItem: Object) => (
                     <div key={campItem.id} className="w-[100%] md:w-[50%] lg:w-[30%]">
                         <CardItem  role={profile?.data.role} id={campItem.id} picture={campItem.picture} name={campItem.name} 

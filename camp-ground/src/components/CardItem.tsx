@@ -34,7 +34,7 @@ export default function CardItem({role,id,picture,name,address,province,district
     }
     
     return (
-            <div className={`${styles.campgroundFont} grid grid-cols-1 gap-5 w-[500px] rounded-[10px] my-[50px]`}>
+            <div className={`${styles.campgroundFont} grid grid-cols-1 gap-5 w-[400px] rounded-[10px] my-[50px]`}>
                 <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow 
                 hover:shadow-xl hover:shadow-black/30"
                 onClick={(e) => {
