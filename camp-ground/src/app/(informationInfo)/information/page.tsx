@@ -11,11 +11,11 @@ import UpdateCampGroundFormHard from "@/components/admin/UpdateCampGroundFormHar
 import Link from "next/link";
 
 export default async function CampGround() {
-  const campgrounds = getCampgrounds();
+  const campgrounds = await getCampgrounds();
   const session = await getServerSession(authOptions);
-  if (!session || !session.user.token) return null;
-  const profile = session ? await getUserProfile(session.user?.token) : null;
-  console.log(session.user.token)
+  if (!session || !session.user || !session.user.token) return null;
+  const profile = session ? await getUserProfile(session.user.token) : null;
+  console.log("Token:",session.user.token)
   return (
     <main>
         <div>
@@ -33,7 +33,7 @@ export default async function CampGround() {
                               <h1>CAMPING INFO</h1>
               </div>
               { profile?.data.role == "admin" ?
-                <div className="relative text-center text-blue-300 font-bold 
+                <div className="relative text-center text-rose-700 font-bold 
                 text-[30px] text-black duration-300 hover:scale-[1.05]">
                   <Link href="/history">
                   View Booking History

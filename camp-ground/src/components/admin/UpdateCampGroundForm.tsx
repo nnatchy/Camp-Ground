@@ -2,6 +2,7 @@
 import updateCampground from "@/libs/updateCampground"
 import { FormEvent, useEffect, useState } from "react"
 import { useRouter } from "next/navigation";
+import HandleUpdateCampground from "./HandleUpdateCampground"
 
 interface Props {
     cid:string
@@ -30,7 +31,7 @@ export default function UpdateCampGroundForm({ cid, token,cName,cAddress,cProvin
     const router = useRouter();
     const handleUpdateCampground = async (event: FormEvent<HTMLFormElement>) => {
         try {
-            const res = await updateCampground(cid, name, address, district, province, postalCode, tel, picture, token);
+            const res = await HandleUpdateCampground(cid, name, address, district, province, postalCode, tel, picture, token);
             console.log('Update Campground successful');
             router.push(`/information/${cid}`);
         } catch (err) {
@@ -40,9 +41,6 @@ export default function UpdateCampGroundForm({ cid, token,cName,cAddress,cProvin
         }
     }
 
-    useEffect(() => {
-        router.prefetch(`/campground/${cid}`)
-    }, [router])
 
     return (
         <form onSubmit={handleUpdateCampground} className="flex flex-col items-center justify-center w-full h-full

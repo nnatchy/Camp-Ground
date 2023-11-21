@@ -30,18 +30,18 @@ export default function BookingForm() {
     if (!name) return null;
     if (!id) return null;
 
-    const createBooking = () => {
-        if (checkInDate && checkOutDate) {
-            const item: CampgroundItem = {
-                campgroundId: id,
-                campgroundName: name,
-                checkInDate: dayjs(checkInDate).format('YYYY/MM/DD'),
-                checkOutDate: dayjs(checkOutDate).format('YYYY/MM/DD')
-            }
-            dispatch(addBooking(item))
-            router.replace("/information");
-        }
-    }
+    // const createBooking = () => {
+    //     if (checkInDate && checkOutDate) {
+    //         const item: CampgroundItem = {
+    //             campgroundId: id,
+    //             campgroundName: name,
+    //             checkInDate: dayjs(checkInDate).format('YYYY/MM/DD'),
+    //             checkOutDate: dayjs(checkOutDate).format('YYYY/MM/DD')
+    //         }
+    //         dispatch(addBooking(item))
+    //         router.replace("/information");
+    //     }
+    // }
 
     const handleAction = async () => {
         try {
