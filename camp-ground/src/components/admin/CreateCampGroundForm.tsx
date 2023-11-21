@@ -35,7 +35,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
         <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-70
             text-black bg-zinc-100 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300`}>
                 <div className="text-black text-[2vw] text-center ">
-                    Create New Campground
+                    Create Campground Form
                 </div>
             <form action={handleCreateCampground} className="relative opacity-100 mt-[25px] mr-[40px]">
 
@@ -131,13 +131,13 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                     </div>
 
                     <div className="py-[40px] space-x-[20px] flex flex-col items-center">
-                        <button
-                            type="submit"
-                            className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[5px] py-[10px] 
-                            duration-300 hover:bg-indigo-800">
-                            Create This Campground
-                        </button>
-                    </div>
+                    <button
+                        type="submit"
+                        className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[10px] py-[10px] 
+                        duration-300 hover:bg-indigo-800 ml-[50px]">
+                        Create New Campground
+                    </button>
+                </div>
                     {error && (
                         <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded">
                             {error}
