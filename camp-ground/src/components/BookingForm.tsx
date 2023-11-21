@@ -16,6 +16,7 @@ export default function BookingForm({ token }: { token: string }) {
     const { data: session } = useSession();
     const [checkInDate, setCheckInDate] = useState<Dayjs | null>(null);
     const [checkOutDate, setCheckOutDate] = useState<Dayjs | null>(null);
+    const [error, setError] = useState<string>('');
     const router = useRouter();
     const urlParams = useSearchParams();
     const id = urlParams.get('id');
@@ -26,13 +27,28 @@ export default function BookingForm({ token }: { token: string }) {
 
     const handleAction = async () => {
         try {
-            console.log("AYO")
-            const res = await BookingAction(id, dayjs(checkInDate).format('YYYY/MM/DD'), dayjs(checkOutDate).format('YYYY/MM/DD'), token)
+            const startDate = dayjs(checkInDate);
+            const endDate = dayjs(checkOutDate);
+            const differenceInDays = endDate.diff(startDate, 'day');
+
+            if (differenceInDays > 3) {
+                setError("The booking duration can't be more than 3 days.");
+                return;
+            }
+
+            const res = await BookingAction(
+                id,
+                startDate.format('YYYY/MM/DD'),
+                endDate.format('YYYY/MM/DD'),
+                token
+            );
+            setError('');
+            console.log(res)
 
         } catch (err) {
-            console.log("Err: ", err)
+            console.log("Err: ", err);
         }
-    }
+    };
 
     return (
         <div className={`${styles.campgroundFont} relative w-screen h-screen`}>
@@ -97,13 +113,20 @@ export default function BookingForm({ token }: { token: string }) {
                             </div>
 
 
-                            <div className="pt-[40px] space-x-[20px] mt-[20px]">
-                                <button type="submit" className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white
-                                ring-slate-600 p-[5px] py-[10px] duration-300 hover:bg-indigo-800"
-                                    >
+                            <div className="pt-[40px] space-x-[20px] mt-[20px] flex flex-col items-center">
+                                <button
+                                    type="submit"
+                                    className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[5px] py-[10px] duration-300 hover:bg-indigo-800"
+                                >
                                     Booking Campground
                                 </button>
+                                {error && (
+                                    <div className="bg-red-500 text-white text-lg py-1 px-3 rounded mt-5">
+                                        {error}
+                                    </div>
+                                )}
                             </div>
+
                         </div>
                     </form>
                 </div>

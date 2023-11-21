@@ -1,4 +1,4 @@
-import { apiBackUrl } from "../../constants"
+import { apiBackUrl } from "../constants"
 
 export default async function userLogin(userEmail: string, userPassword:string) {
     const response = await fetch(`${apiBackUrl}/auth/login`, {

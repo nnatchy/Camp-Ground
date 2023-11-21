@@ -1,4 +1,4 @@
-import { apiBackUrl } from "../../constants"
+import { apiBackUrl } from "../constants"
 
 export default async function getUserProfile(token:string) {
 	const response = await fetch(`${apiBackUrl}/auth/me`, {

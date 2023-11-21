@@ -1,4 +1,4 @@
-import { apiBackUrl } from "../../constants";
+import { apiBackUrl } from "../constants";
 
 export default async function deleteCampground(cid: string, token: string) {
     try {

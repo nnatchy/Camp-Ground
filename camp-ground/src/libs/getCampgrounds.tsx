@@ -1,4 +1,4 @@
-import { apiBackUrl } from "../../constants";
+import { apiBackUrl } from "../constants";
 
 export default async function getCampgrounds() {
     await new Promise((resolve) => setTimeout(resolve, 5000));

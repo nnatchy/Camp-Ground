@@ -1,4 +1,4 @@
-import { apiBackUrl } from "../../constants";
+import { apiBackUrl } from "../constants";
 
 export default async function deleteBooking(bid: string, token: string) {
     try {
