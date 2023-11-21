@@ -12,7 +12,7 @@ export default async function TopMenu(){
     
     return (
         <div className={`${styles.FiraSans} flex justify-start fixed flex-row h-[110px] 
-        top-0 right-0 left-0 z-30 items-center text-[20px]
+        top-0 right-0 left-0 z-30 items-center text-[5px] lg:text-[20px] md:text-[15px] sm:text-[10px]
          text-white font-normal w-screen`}>
             <Image src="/images/logo.png"
             className="ml-[10%] w-[80px] h-[80px]"
@@ -28,10 +28,10 @@ export default async function TopMenu(){
                 : null
                 }
             </div>
-            <div className="w-[25%]">
+            <div className="lg:w-[25%] md:w-[15%] sm:w-[7%] w-[0%]">
 
             </div>
-            <div>
+            <div className="flex items-center">
             {
                         session ? 
                         <TopMenuItem pageRef="/api/auth/signout" 

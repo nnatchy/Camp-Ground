@@ -20,7 +20,7 @@ export default async function CampgroundDetailPage({
   if (!session || !session.user.token) return null
   const profile = session ? await getUserProfile(session.user.token) : null;
   return (
-    <main className={`${styles.campgroundFont} p-5 mt-[50px]`}>
+    <main className={`${styles.campgroundFont} text-white p-5 mt-[50px]`}>
       <div className="flex mt-[60px]">
         <Image
           src={campgroundDetail.data.picture}
@@ -51,7 +51,7 @@ export default async function CampgroundDetailPage({
       </div>
       {
         (profile?.data.role == "admin") ?
-          <div>
+          <div className="my-[50px] px-[90px]">
             <UpdateCampGroundForm cid={params.cid}
             cName={campgroundDetail.data.name}
             cProvince={campgroundDetail.data.province}

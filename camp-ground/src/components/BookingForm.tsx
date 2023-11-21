@@ -51,7 +51,7 @@ export default function BookingForm({ token }: { token: string }) {
     };
 
     return (
-        <div className={`${styles.campgroundFont} relative w-screen h-screen`}>
+        <div className={`${styles.campgroundFont} text-black relative w-screen h-screen`}>
             <div className="fixed inset-0 bg-cover bg-center z-0 saturate-100 opacity-80">
                 <Image
                     src="/images/sky.jpg"

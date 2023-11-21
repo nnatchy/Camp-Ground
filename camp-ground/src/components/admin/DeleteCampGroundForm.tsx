@@ -1,5 +1,6 @@
 'use client'
 import { HandleDeleteCampground } from "./handler/HandleDeleteCampground"
+import styles from "@/styles/FontPage.module.css"
 
 export default function DeleteCampgroundForm({ cid, token }: { cid: string, token: string }) {
 
@@ -13,17 +14,21 @@ export default function DeleteCampgroundForm({ cid, token }: { cid: string, toke
     }
 
     return (
-        <form action={handleDeleteCampground} className="flex flex-col items-center justify-center w-full h-full
-		border-[#21628d] hover:border-[#3ce7e4] rounded-lg space-y-2 px-10 py-5 mt-10 border-4 bg-white
-         transform transition-colors duration-300">
-            <div className="text-xl text-gray-700 font-bold">Delete Campground</div>
-            <div className="flex items-center w-full my-2">
-                <button type="submit" className="bg-white text-cyan-600 border-2 border-cyan-600 border-opacity-100
-  font-semibold py-2 px-2 rounded-lg z-3
-  transform transition-colors duration-300 hover:bg-cyan-600 hover:text-white hover:border-transparent w-full">
-                    Delete
-                </button>
-            </div>
-        </form>
+        <div className={`${styles.campgroundFont} my-[50px] w-[600px] h-[70%] bg-white rounded-[10px] opacity-60
+            text-black bg-zinc-100 w-full pt-[30px]`}>
+                <div className="text-black text-[2vw] text-center ">
+                    Delete This Campground
+                </div>
+            <form action={handleDeleteCampground} className="relative opacity-100 mt-[25px] mr-[40px]">
+                <div className="py-[40px] space-x-[20px] flex flex-col items-center">
+                    <button
+                        type="submit"
+                        className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[5px] py-[10px] 
+                        duration-300 hover:bg-indigo-800">
+                        Delete This Campground
+                    </button>
+                </div>
+            </form>
+        </div>              
     )
 }

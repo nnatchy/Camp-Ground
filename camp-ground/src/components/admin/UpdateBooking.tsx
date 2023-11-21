@@ -4,6 +4,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
 import { UpdateBookingAction } from "@/action/UpdateBookingAction";
+import styles from "@/styles/FontPage.module.css"
 
 export default function UpdateBookingForm({ token }: { token: string }) {
     const [id, setId] = useState("");
@@ -37,53 +38,64 @@ export default function UpdateBookingForm({ token }: { token: string }) {
     };
 
     return (
-        <div>
-            <form action={handleUpdateBooking} className="flex flex-col items-center justify-center w-screen 
-            border-[#21628d] hover:border-[#3ce7e4] rounded-lg space-y-2 px-5 py-5 mt-10 border-4 bg-white
-            transform transition-colors duration-300 text-black">
-                <div className="text-[30px] font-bold">Update Booking Form</div>
-                <div className="w-full">
-                    <label className="w-1/4 block pr-2 font-semibold text-[20px]" htmlFor="name">
-                        Insert the booking_id that you want to edit
-                    </label>
-                    <input type="text" required id="name" name="name" placeholder="booking_id"
-                        className="bg-white border-2 border-gray-200 rounded w-[50%] p-2 text-gray-700 
-                        focus:outline-none focus:border-blue-400 transition duration-300"
-                        value={id} onChange={(e) => setId(e.target.value)} />
-                </div>
-                <div className="flex flex-row justify-start">
-                    <div className="w-full">
-                        <label htmlFor="checkOutDate" className="w-1/4 block pr-2 font-semibold text-[20px]">
-                            `                   New Check In Date
-                        </label>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker className="mt-[5px] bg-white" value={checkInDate}
-                                onChange={(e) => { setCheckInDate(e) }} />
-                        </LocalizationProvider>
+        <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-60
+        text-black bg-zinc-100 w-full pt-[30px] mt-[50px]`}>
+            <div className="text-black text-[2vw] text-center ">
+                Update Booking Form
+            </div>
+            <form action={handleUpdateBooking} className="px-[20px] w-full text-black relative opacity-100 mt-[25px] mr-[40px]">
+                <div className="relative opacity-100 ml-[15px] mt-[25px] mr-[40px]">
+                    <div className="flex items-center w-full my-2">
+                            <div className="w-full">
+                                <label htmlFor="id" className="ml-[15px] block text-[1.25vw] w-full opacity-60">
+                                    Insert the booking_id that you want to edit
+                                </label>
+                                <input type="text" required id="id" name="id" placeholder="Insert Your Booking Id"
+                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                                ml-[30px] focus:outline-none indent-3 w-full focus:border-blue-400 transition duration-300" 
+                                value={id} onChange={(e) => setId(e.target.value)} />
+                        </div>
                     </div>
 
-                    <div className="w-full">
-                        <label htmlFor="checkOutDate" className="w-1/4 block pr-2 font-semibold text-[20px]">
-                            `                   New Check Out Date
-                        </label>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker className="mt-[5px] bg-white" value={checkInDate}
+                <div className="w-full flex flex-row justify-start mt-[20px]">
+                        <div className="w-[50%]">
+                            <label htmlFor="checkInDate" className="ml-[15px] block text-[1.25vw] w-full opacity-60">
+                                New Check In Date
+                            </label>
+                            <div className="ml-[30px]">
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker className="w-[100%] mt-[7px] bg-white" value={checkInDate}
+                                    onChange={(e) => { setCheckInDate(e) }} />
+                                </LocalizationProvider>
+                            </div>
+                        </div>
+
+                        <div className="w-[50%]">
+                            <label htmlFor="checkInDate" className="ml-[15px] block text-[1.25vw] w-full opacity-60">
+                                New Check Out Date
+                            </label>
+                        <div className="ml-[30px]">
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DatePicker className="w-[100%] mt-[7px] bg-white" value={checkOutDate}
                                 onChange={(e) => { setCheckOutDate(e) }} />
-                        </LocalizationProvider>
+                            </LocalizationProvider>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <button type="submit" className="bg-white text-cyan-600 border-2 border-cyan-600 border-opacity-100
-                            font-semibold py-2 px-2 rounded-lg z-3
-                            transform transition-colors duration-300 hover:bg-cyan-600 hover:text-white hover:border-transparent w-full">
-                        Edit Your Booking Schedule
-                    </button>
-                </div>
-                {error && (
-                    <div className="bg-red-500 text-white w-fit text-[20px] py-1 px-3 rounded">
-                        {error}
+                    <div className="py-[40px] space-x-[20px] flex flex-col items-center">
+                        <button
+                            type="submit"
+                            className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[5px] py-[10px] 
+                            duration-300 hover:bg-indigo-800">
+                            Create This Campground
+                        </button>
                     </div>
-                )}
+                    {error && (
+                        <div className="bg-red-500 text-white w-fit text-[20px] py-1 px-3 rounded">
+                            {error}
+                        </div>
+                    )}
+                </div>
             </form>
         </div>
     )

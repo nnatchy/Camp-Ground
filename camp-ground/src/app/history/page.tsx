@@ -14,20 +14,20 @@ export default async function History() {
     const bookings = await getBookings(session.user.token);
 
     return (
-        <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] w-screen h-screen'>
-            <div className = {`${styles.campgroundFont} uppercase text-bold text-[40px]`}>
+        <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] w-screen'>
+            <div className = {`${styles.campgroundFont} uppercase text-white text-bold text-[40px]`}>
                 All Booking History
             </div>
-            <div>
-                <div className={`${styles.campgroundFont} text-2xl font-bold`}>
+            <div className="w-screen">
+                <div className={`${styles.campgroundFont} ml-[5%] w-screen flex flex-row flex-wrap justify-around text-2xl font-bold`}>
                     {bookings.data.map((booking: Object) => (
-                    <div>
+                    <div className="lg:w-[50%] md:w-screen w-screen">
                         <BookingPanel token={session.user ? session.user.token : null} id={booking._id} bookingDate={booking.bookingDate} checkOutDate={booking.checkoutDate} 
                         user={booking.user} all={true}/>
                     </div>
                     ))}
                 </div>
-                <div>
+                <div className="my-[50px] px-[90px]">
                     <UpdateBookingForm token={session.user.token}/>
                 </div>
             </div>
