@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '../api/auth/[...nextauth]/route'
 import getBookings from '@/libs/getBookings'
 import BookingItem from '@/components/BookingItem'
+import UpdateBookingForm from "@/components/admin/UpdateBooking"
 
 
 export default async function History() {
@@ -22,9 +23,12 @@ export default async function History() {
                     {bookings.data.map((booking: Object) => (
                     <div>
                         <BookingItem token={session.user.token} id={booking._id} bookingDate={booking.bookingDate} checkOutDate={booking.checkoutDate} 
-                        user={booking.user}/>
+                        user={booking.user} all={true}/>
                     </div>
                     ))}
+                </div>
+                <div>
+                    <UpdateBookingForm token={session.user.token}/>
                 </div>
             </div>
             {/* {     
