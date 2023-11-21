@@ -41,13 +41,13 @@ export default function UpdateBookingForm({ token }: { token: string }) {
             <form action={handleUpdateBooking} className="flex flex-col items-center justify-center w-screen 
             border-[#21628d] hover:border-[#3ce7e4] rounded-lg space-y-2 px-5 py-5 mt-10 border-4 bg-white
             transform transition-colors duration-300 text-black">
-                <div className="text-xl font-bold">Update Booking Form</div>
+                <div className="text-[30px] font-bold">Update Booking Form</div>
                 <div className="w-full">
                     <label className="w-1/4 block pr-2 font-semibold text-[20px]" htmlFor="name">
                         Insert the booking_id that you want to edit
                     </label>
                     <input type="text" required id="name" name="name" placeholder="booking_id"
-                        className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                        className="bg-white border-2 border-gray-200 rounded w-[50%] p-2 text-gray-700 
                         focus:outline-none focus:border-blue-400 transition duration-300"
                         value={id} onChange={(e) => setId(e.target.value)} />
                 </div>

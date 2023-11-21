@@ -4,6 +4,7 @@ import { authOptions } from '../api/auth/[...nextauth]/route'
 import getBookings from '@/libs/getBookings'
 import BookingPanel from "@/components/BookingPanel"
 import UpdateBookingForm from "@/components/admin/UpdateBooking"
+import { FaCalendar } from "react-icons/fa"
 
 
 export default async function myBooking() {
@@ -15,8 +16,8 @@ export default async function myBooking() {
 
     return (
         <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] h-screen'>
-            <div className={`${styles.campgroundFont} uppercase text-bold text-[40px]`}>
-                {`${session ? session.user?.name : "Not Logged In"} Booking History`}
+            <div className={`${styles.campgroundFont} uppercase font-bold text-[40px] flex transition-transform transform hover:scale-[1.055] duration-300 `}>
+                {`${session ? session.user?.name : "Not Logged In"} Booking History`} <span className="pl-4"><FaCalendar/></span>
             </div>
             <div>
                 <div className={`${styles.campgroundFont} text-2xl font-bold`}>
@@ -35,38 +36,6 @@ export default async function myBooking() {
                     <UpdateBookingForm token={session.user.token} />
                 </div>
             </div>
-            {/* {     
-                bookingItems.length === 0 ?
-                    <div className={`${styles.campgroundFont} text-2xl font-bold`}>
-                        <div>
-                            <Image className="w-[400px] h-[400px] mt-[100px]"
-                            src="/images/dontKnow.png"
-                            alt="Error to load picture"
-                            width={1000}
-                            height={1000}/>
-                        </div>
-                    </div>
-                    :
-                    bookingItems.map((item) => (
-                        <div className={`${styles.campgroundFont} bg-white rounded-xl w-[90%] pl-5 py-4 text-black`} 
-                        key={item.campgroundId}>
-                            <div className='flex font-bold text-[20px]'>Campground Name : 
-                            <span className='font-normal pl-5'>{item.campgroundName}</span></div>
-                            <div className='flex font-bold text-[20px]'>checkIn Date : 
-                            <span className='font-normal pl-5'>{item.checkInDate}</span></div>
-                            <div className='flex font-bold text-[20px]'>checkOut Date : 
-                            <span className='font-normal pl-5'>{item.checkOutDate}</span></div>
-
-                            <button
-                                className='bg-red-500 text-white border-2 border-red-800 border-opacity-100
-                                font-semibold py-2 px-6 rounded-lg z-3
-                                transform transition-colors duration-300 hover:bg-rose-800  hover:border-white
-                                p-3 mt-2'
-                                onClick={() => { dispatch(removeBooking(item)) }}
-                            >Cancel Booking</button>
-                        </div>
-                    ))
-            } */}
         </main>
     )
 }
