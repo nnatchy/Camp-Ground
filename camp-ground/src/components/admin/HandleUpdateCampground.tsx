@@ -1,35 +1,27 @@
 'use server'
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
-import { dbConnect } from "@/db/dbConnect"
-import Booking from "@/db/models/Booking"
 import { getServerSession } from "next-auth"
 import { revalidateTag } from "next/cache"
-import { redirect, useSearchParams } from "next/navigation"
-import createBooking from "@/libs/createBooking"
+import { redirect } from "next/navigation"
+import updateCampground from "@/libs/updateCampground"
 
 
-export async function HandleUpdateCampground(cid: string, bookingDate: string, checkoutDate: string){
+export async function HandleUpdateCampground(cid: string, name: string, address: string, district: string, province: string, postalCode: string, tel: string, picture: string){
     const session = await getServerSession(authOptions);
-    if (!session) return;
-    if (!cid) return;
+    if (!session || !session.user || !session.user.token) return;
     const token = session.user?.token
     console.log(token)
     try {
-        console.log(cid, bookingDate, checkoutDate)
-        const res = await createBooking(cid, bookingDate, checkoutDate, token)
-        // dbConnect();
-        // const booking = await Booking.create({
-        //     bookingDate:checkInDate,
-        //     checkoutDate:checkOutDate,
-        //     user: session.user?.id,
-        //     campground : campgroundName
-        // })
-        console.log("Create Booking successful")
+        const res = await updateCampground(cid, name, address, district, province, postalCode, tel, picture, token)
+        console.log(res)
+        console.log("Update Campground successful")
     } catch (err) {
+        alert("Not match constraint Ja")
          console.log("Error during creating booking: ", err)
     }
-    revalidateTag("bookings")
-    redirect("/information")
+    revalidateTag(`campground/${cid}`)
+    revalidateTag(`campgrounds`)
+    redirect(`/information`)
 }
 
 

@@ -16,7 +16,7 @@ export default async function myBooking() {
     return (
         <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] h-screen'>
             <div className = {`${styles.campgroundFont} uppercase text-bold text-[40px]`}>
-                {`${session? session.user?.name:"Dont Be Sign in Yet"} Booking History`}
+                {`${session? session.user?.name:"Not Logged In"} Booking History`}
             </div>
             <div>
                 <div className={`${styles.campgroundFont} text-2xl font-bold`}>

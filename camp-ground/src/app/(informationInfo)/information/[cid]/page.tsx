@@ -6,18 +6,19 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import UpdateCampGroundForm from "@/components/admin/UpdateCampGroundForm";
 import DeleteCampgroundForm from "@/components/admin/DeleteCampGroundForm";
 import styles from "@/styles/FontPage.module.css"
+import { revalidateTag } from "next/cache";
 
 export default async function CampgroundDetailPage({
   params,
 }: {
   params: { cid: string };
 }) {
-
+  
+  revalidateTag(`/campground/${params.cid}`)
   const campgroundDetail = await getCampground(params.cid);
   const session = await getServerSession(authOptions);
   if (!session || !session.user.token) return null
   const profile = session ? await getUserProfile(session.user.token) : null;
-
   return (
     <main className={`${styles.campgroundFont} p-5 mt-[50px]`}>
       <div className="flex mt-[60px]">
