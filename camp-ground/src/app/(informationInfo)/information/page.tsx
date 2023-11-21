@@ -89,6 +89,7 @@ export default async function CampGround() {
                     <div className="text-[20px] space-y-3">
                       <li>Campground Name length can't be more than 50 lengths</li>
                       <li>Postal code length can't be more than 5 lengths</li>
+                      <li>The picture must be in google drive form</li>
                     </div>
                   </div>
                 </div>
