@@ -1,80 +1,80 @@
 'use client'
+import updateBooking from "@/libs/updateBooking";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
+import dayjs, { Dayjs } from "dayjs";
+import { useSession } from "next-auth/react";
+import { FormEvent } from "react";
+import { useState } from "react";
 
 interface Props {
-    id:string
-    token:string
-    bookingDate:Date
-    checkoutDate:Date
-    user:string
+    token : string
 }
 
-export default function UpdateCampGroundForm({id,token,bookingDate,checkoutDate,user}: Props) {
-    // const handleUpdateCampground = async (event: FormEvent<HTMLFormElement>) => {
-    //     try {
-    //         const res = await updateCampground(cid, name, address, district, province, postalCode, tel, picture, token);
-    //         console.log('Update Campground successful');
-    //         router.push(`/information/${cid}`);
-    //     } catch (err) {
-    //         alert('Update Failed: Not match the constraint')
-    //         console.log("THERE's ERROR")
-    //         return false;
-    //     }
-    // }
+export default function UpdateBookingForm(token:string) {
+    const [id,setId] = useState(""); 
+    const [checkInDate,setCheckInDate] = useState<Dayjs|null>(null);
+    const [checkOutDate,setCheckOutDate] = useState<Dayjs|null>(null);
 
+    const handleUpdateBooking = async (event: FormEvent<HTMLFormElement>) => {
+        try {
+            const res = await updateBooking(id,
+                            dayjs(checkInDate).format('YYYY/MM/DD'),
+                            dayjs(checkInDate).format('YYYY/MM/DD'),
+                            token);
+            console.log('Update Campground successful');
+            // router.push(`/information/${cid}`);
+        } catch (err) {
+            alert('Update Failed: Not match the constraint')
+            console.log("THERE's ERROR")
+            return false;
+        }
+    }
 
     return (
-        <form>
-            <div className="relative opacity-100 ml-[40px] mt-[25px] mr-[40px]">
-                <div>
-                    <label htmlFor="name" className="ml-[15px] block text-[12px] w-full opacity-60">
-                        Traveler Name
+        <div>
+            <form onSubmit={handleUpdateBooking} className="flex flex-col items-center justify-center w-screen 
+            border-[#21628d] hover:border-[#3ce7e4] rounded-lg space-y-2 px-5 py-5 mt-10 border-4 bg-white
+            transform transition-colors duration-300 text-black">
+                <div className="text-xl font-bold">Add Campground Form</div>
+                <div className="w-full">
+                    <label className="w-1/4 block pr-2 font-semibold text-[20px]" htmlFor="name">
+                        Insert Your Booking Id That You Want To Edit
                     </label>
-                    <input className="w-full mt-[5px] bg-white text-[15px] p-[10px] 
-                        rounded-full indent-2 bg-white"
-                        type="text" id="name" placeholder="name"  readOnly />
-                    </div>
-
-                    <div className="mt-[20px]">
-                        <label htmlFor="campgroundName" className="ml-[15px] block text-[12px] w-full opacity-60">
-                            Campground Name
-                        </label>
-                    <input className="w-full mt-[5px] bg-white text-[15px] p-[10px] 
-                    rounded-full indent-2 bg-white"
-                    type="text" id="campgroundName" placeholder="Camp ground name" readOnly />
-                    </div>
-
-                    <div className="flex flex-row justify-start flex-wrap mt-[20px]">
-                        <div>
-                            <label htmlFor="checkInDate" className="ml-[15px] block text-[12px] w-full 
-                            opacity-60">
-                                Check In Date
-                            </label>
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DatePicker className="mt-[5px] bg-white"/>
-                            </LocalizationProvider>
-                            </div>
-                    </div>
-
-                    <div className="w-full mt-[20px]">
-                        <label htmlFor="checkOutDate" className="ml-[15px] block text-[12px] w-full 
-                            opacity-60">
-                            Check Out Date
+                    <input type="text" required id="name" name="name" placeholder="Campground name"
+                        className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                        focus:outline-none focus:border-blue-400 transition duration-300"  
+                        value={id} onChange={(e)=>setId(e.target.value)}/>
+                </div>
+                <div className="flex flex-row justify-start">
+                    <div className="w-full">
+                        <label htmlFor="checkOutDate" className="w-1/4 block pr-2 font-semibold text-[20px]">
+        `                   New Check In Date
                         </label>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker className="mt-[5px] bg-white"/>
+                        <DatePicker className="mt-[5px] bg-white" value={checkInDate}
+                        onChange={(e)=>{setCheckInDate(e)}}/>
                         </LocalizationProvider>
                     </div>
-
-
-                    <div className="pt-[40px] space-x-[20px] mt-[20px]">
-                        <button type="submit" className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white
-                        ring-slate-600 p-[5px] py-[10px] duration-300 hover:bg-indigo-800">
-                            Booking Campground
-                        </button>
+                
+                    <div className="w-full">
+                        <label htmlFor="checkOutDate" className="w-1/4 block pr-2 font-semibold text-[20px]">
+        `                   New Check Out Date
+                        </label>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DatePicker className="mt-[5px] bg-white" value={checkInDate}
+                        onChange={(e)=>{setCheckInDate(e)}}/>
+                        </LocalizationProvider>
                     </div>
                 </div>
+                    <div>
+                        <button type="submit" className="bg-white text-cyan-600 border-2 border-cyan-600 border-opacity-100
+                            font-semibold py-2 px-2 rounded-lg z-3
+                            transform transition-colors duration-300 hover:bg-cyan-600 hover:text-white hover:border-transparent w-full">
+                            Edit Your Booking Schedule
+                        </button>
+                    </div>                  
             </form>
+        </div>
     )
 }

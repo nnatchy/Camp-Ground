@@ -14,9 +14,10 @@ interface Props{
     bookingDate:Date
     checkOutDate:Date
     user:string
+    all:boolean
 }
 
-export default async function BookingItem({id,token,bookingDate,checkOutDate,user}:Props){
+export default async function BookingItem({id,token,bookingDate,checkOutDate,user,all}:Props){
     const booking = await getBooking(id,token);
 
     const handleDeleteBooking = async ( Form :FormData) => {
@@ -25,7 +26,12 @@ export default async function BookingItem({id,token,bookingDate,checkOutDate,use
             const res = await deleteBooking(id, token)
             alert('Delete Successful YAYA')
             console.log('Delete Booking successful')
+            
             revalidateTag("bookings");
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000)
             redirect("/history")
         } catch (err) {
             console.log(err)
@@ -41,8 +47,11 @@ export default async function BookingItem({id,token,bookingDate,checkOutDate,use
                         <span className='font-normal pl-5'>{id}</span></div>    
                         <div className='flex font-bold text-[20px]'>Campground Name : 
                         <span className='font-normal pl-5'>{booking.data.campground.name}</span></div>
-                        <div className='flex font-bold text-[20px]'>User Id: 
-                        <span className='font-normal pl-5'>{user}</span></div>
+                        {   all ?
+                            <div className='flex font-bold text-[20px]'>User Id: 
+                            <span className='font-normal pl-5'>{user}</span></div>
+                            : null
+                        }
                         <div className='flex font-bold text-[20px]'>BookingDate : 
                         <span className='font-normal pl-5'>{dayjs(bookingDate).format('YYYY/MM/DD')}</span></div>              
                         <div className='flex font-bold text-[20px]'>Check Out Date: 
@@ -56,12 +65,6 @@ export default async function BookingItem({id,token,bookingDate,checkOutDate,use
                             p-3 mt-2 ml-[15%]'>
                             Cancel Booking
                         </button>
-                        {/* <Link href={`/bookingEdit?id=${id}&token=${token}`} className='bg-blue-500 text-white border-2 border-blue-800 border-opacity-100
-                            font-semibold py-2 px-6 rounded-lg z-3
-                            transform transition-colors duration-300 hover:bg-cyan-500  hover:border-white
-                            p-3 mt-2 ml-[5%]'>
-                           Edit Booking
-                        </Link> */}
                     </div>
             </div>
         </form>

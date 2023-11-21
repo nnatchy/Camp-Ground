@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '../api/auth/[...nextauth]/route'
 import getBookings from '@/libs/getBookings'
 import BookingItem from '@/components/BookingItem'
+import UpdateBookingForm from "@/components/admin/UpdateBooking"
 
 
 export default async function myBooking() {
@@ -24,11 +25,14 @@ export default async function myBooking() {
                         {
                             session.user._id == booking.user ?
                             <BookingItem  token={session.user.token} id={booking._id} bookingDate={booking.bookingDate} checkOutDate={booking.checkoutDate} 
-                            user={booking.user}/> : null
+                            user={booking.user} all={false}/> : null
                         }
                        
                     </div>
                     ))}
+                </div>
+                <div>
+                    <UpdateBookingForm token={session.user.token}/>
                 </div>
             </div>
             {/* {     
