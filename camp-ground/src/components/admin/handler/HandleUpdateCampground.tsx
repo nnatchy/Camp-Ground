@@ -1,7 +1,7 @@
 'use server'
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { getServerSession } from "next-auth"
-import { revalidateTag } from "next/cache"
+import { revalidatePath, revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import updateCampground from "@/libs/updateCampground"
 
@@ -17,8 +17,9 @@ export async function HandleUpdateCampground(cid: string, name: string, address:
          console.log("Error during creating booking: ", err)
     }
     revalidateTag(`campground/${cid}`)
+    revalidatePath(`/information/${cid}`)
     revalidateTag(`campgrounds`)
-    redirect(`/information`)
+    redirect(`/information/${cid}`)
 }
 
 

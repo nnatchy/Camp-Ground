@@ -1,22 +1,18 @@
 'use client'
 import styles from "@/styles/FontPage.module.css"
 import Image from "next/image"
-import { CampgroundItem } from "@/interface"
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers"
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 import BookingInstruction from "./BookingInstruction"
 import { useDispatch } from "react-redux"
 import { useState } from "react"
-import { addBooking } from "@/redux/features/bookSlice"
 import { AppDispatch } from "@/redux/store"
 import dayjs, { Dayjs } from "dayjs"
 import { useSession } from "next-auth/react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { BookingAction } from "@/action/BookingAction"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
-export default function BookingForm() {
+export default function BookingForm({ token }: { token: string }) {
     const { data: session } = useSession();
     const [checkInDate, setCheckInDate] = useState<Dayjs | null>(null);
     const [checkOutDate, setCheckOutDate] = useState<Dayjs | null>(null);
@@ -25,29 +21,14 @@ export default function BookingForm() {
     const id = urlParams.get('id');
     const name = urlParams.get('name');
     const dispatch = useDispatch<AppDispatch>();
-    // const sessionTmp = await getServerSession(authOptions)
-    // if (!sessionTmp || !sessionTmp) return;
     if (!name) return null;
     if (!id) return null;
-
-    // const createBooking = () => {
-    //     if (checkInDate && checkOutDate) {
-    //         const item: CampgroundItem = {
-    //             campgroundId: id,
-    //             campgroundName: name,
-    //             checkInDate: dayjs(checkInDate).format('YYYY/MM/DD'),
-    //             checkOutDate: dayjs(checkOutDate).format('YYYY/MM/DD')
-    //         }
-    //         dispatch(addBooking(item))
-    //         router.replace("/information");
-    //     }
-    // }
 
     const handleAction = async () => {
         try {
             console.log("AYO")
-            const res = await BookingAction(id, dayjs(checkInDate).format('YYYY/MM/DD'), dayjs(checkOutDate).format('YYYY/MM/DD'))
-            
+            const res = await BookingAction(id, dayjs(checkInDate).format('YYYY/MM/DD'), dayjs(checkOutDate).format('YYYY/MM/DD'), token)
+
         } catch (err) {
             console.log("Err: ", err)
         }
@@ -119,7 +100,7 @@ export default function BookingForm() {
                             <div className="pt-[40px] space-x-[20px] mt-[20px]">
                                 <button type="submit" className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white
                                 ring-slate-600 p-[5px] py-[10px] duration-300 hover:bg-indigo-800"
-                                    onClick={createBooking}>
+                                    >
                                     Booking Campground
                                 </button>
                             </div>

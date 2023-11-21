@@ -1,10 +1,12 @@
+import { apiBackUrl } from "../../constants"
+
 export default async function getBooking(id:string,token:string) {
-	const response = await fetch(`http://localhost:5000/api/v1/bookings/${id}`, {
+	const response = await fetch(`${apiBackUrl}/bookings/${id}`, {
 		method: 'GET',
 		headers: {
 			authorization: `Bearer ${token}`,
 		},
-		next: {tags: ['bookings']}
+		next: {tags: [`bookings/${id}`]}
 	})
 	
 	if(!response.ok) {

@@ -1,5 +1,7 @@
+import { apiBackUrl } from "../../constants"
+
 export default async function getBookings(token:string) {
-	const response = await fetch('http://localhost:5000/api/v1/bookings', {
+	const response = await fetch(`${apiBackUrl}/bookings`, {
 		method: 'GET',
 		headers: {
 			authorization: `Bearer ${token}`,

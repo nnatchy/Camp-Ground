@@ -1,5 +1,5 @@
 'use server'
-import { revalidateTag } from "next/cache"
+import { revalidatePath, revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import deleteCampground from "@/libs/deleteCampground"
 
@@ -14,6 +14,7 @@ export async function HandleDeleteCampground(cid: string, token: string){
          console.log("Error during creating booking: ", err)
     }
     revalidateTag(`campgrounds`)
+    revalidatePath('/information')
     redirect(`/information`)
 }
 

@@ -1,8 +1,8 @@
 import { apiBackUrl } from "../../constants";
 
-export default async function deleteBooking(cid: string, token: string) {
+export default async function deleteBooking(bid: string, token: string) {
     try {
-        const response = await fetch(`${apiBackUrl}/bookings/${cid}`, {
+        const response = await fetch(`${apiBackUrl}/bookings/${bid}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,

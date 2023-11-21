@@ -2,7 +2,7 @@ import styles from "@/styles/FontPage.module.css"
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../api/auth/[...nextauth]/route'
 import getBookings from '@/libs/getBookings'
-import BookingItem from '@/components/BookingItem'
+import BookingPanel from "@/components/BookingPanel"
 import UpdateBookingForm from "@/components/admin/UpdateBooking"
 
 
@@ -10,7 +10,7 @@ export default async function History() {
     // const bookingItems = useAppSelector(state => state.campgroundSlice.campgroundItems);
     // const dispatch = useDispatch<AppDispatch>()
     const session = await getServerSession(authOptions);
-    if (!session || !session.user.token) return null
+    if (!session || !session.user || !session.user.token) return null
     const bookings = await getBookings(session.user.token);
 
     return (
@@ -22,13 +22,13 @@ export default async function History() {
                 <div className={`${styles.campgroundFont} text-2xl font-bold`}>
                     {bookings.data.map((booking: Object) => (
                     <div>
-                        <BookingItem token={session.user.token} id={booking._id} bookingDate={booking.bookingDate} checkOutDate={booking.checkoutDate} 
+                        <BookingPanel token={session.user ? session.user.token : null} id={booking._id} bookingDate={booking.bookingDate} checkOutDate={booking.checkoutDate} 
                         user={booking.user} all={true}/>
                     </div>
                     ))}
                 </div>
                 <div>
-                    <UpdateBookingForm/>
+                    <UpdateBookingForm token={session.user.token}/>
                 </div>
             </div>
             {/* {     
