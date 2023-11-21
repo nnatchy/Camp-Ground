@@ -32,8 +32,8 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
     }
 
     return (
-        <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-60
-            text-black bg-zinc-100 w-full pt-[30px]`}>
+        <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-70
+            text-black bg-zinc-100 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300`}>
                 <div className="text-black text-[2vw] text-center ">
                     Create New Campground
                 </div>

@@ -46,10 +46,10 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
 
     return (
         <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-60
-            text-black bg-zinc-100 w-full pt-[30px]`}>
-                <div className="text-black text-[2vw] text-center ">
-                    Update This Campground
-                </div>
+        text-black bg-zinc-100 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300 relative`}>
+        <div className="text-black text-[2vw] text-center font-semibold">
+            Update Campground Form
+        </div>
             <form action={handleUpdateCampground} className="relative opacity-100 mt-[25px] mr-[40px]">
 
                 <div className="relative opacity-100 ml-[20px] mt-[25px] mr-[40px]">
@@ -144,13 +144,13 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                     </div>
 
                     <div className="py-[40px] space-x-[20px] flex flex-col items-center">
-                        <button
-                            type="submit"
-                            className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[5px] py-[10px] 
-                            duration-300 hover:bg-indigo-800">
-                            Update This Campground
-                        </button>
-                    </div>
+                    <button
+                        type="submit"
+                        className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[10px] py-[10px] 
+                        duration-300 hover:bg-indigo-800 ml-[50px]">
+                        Update This Campground
+                    </button>
+                </div>
                     {error && (
                         <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded">
                             {error}
@@ -159,79 +159,5 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                 </div>
             </form>
         </div>
-//         <form action={handleUpdateCampground} className="flex flex-col items-center justify-center w-full h-full
-// 		border-[#21628d] hover:border-[#3ce7e4] rounded-lg space-y-2 px-10 py-5 mt-10 border-4 bg-white
-//          transform transition-colors duration-300">
-//             <div className="text-xl text-gray-700 font-bold">Update Campground Form</div>
-
-//             <div className="flex items-center w-full my-2">
-//                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="name">Campground name</label>
-//                 <input type="text" required id="name" name="name" placeholder="Campground name"
-//                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-//                     focus:outline-none focus:border-blue-400 transition duration-300"
-//                     value={name}
-//                     onChange={(e) => setName(e.target.value)} />
-//             </div>
-//             <div className="flex items-center w-full my-2">
-//                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="address">Address</label>
-//                 <input type="text" required id="address" name="address" placeholder="Address"
-//                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-//                     focus:outline-none focus:border-blue-400 transition duration-300"
-//                     value={address}
-//                     onChange={(e) => setAddress(e.target.value)} />
-//             </div>
-//             <div className="flex items-center w-full my-2">
-//                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="district">District</label>
-//                 <input type="text" required id="district" name="district" placeholder="District"
-//                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-//                     focus:outline-none focus:border-blue-400 transition duration-300"
-//                     value={district}
-//                     onChange={(e) => setDistrict(e.target.value)} />
-//             </div>
-//             <div className="flex items-center w-full my-2">
-//                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="province">Province</label>
-//                 <input type="text" required id="province" name="province" placeholder="Province"
-//                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-//                     focus:outline-none focus:border-blue-400 transition duration-300"
-//                     value={province}
-//                     onChange={(e) => setProvince(e.target.value)} />
-//             </div>
-//             <div className="flex items-center w-full my-2">
-//                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="postalCode">Postal Code</label>
-//                 <input type="text" required id="postalCode" name="postalCode" placeholder="Postal Code"
-//                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-//                     focus:outline-none focus:border-blue-400 transition duration-300"
-//                     value={postalCode}
-//                     onChange={(e) => setPostalCode(e.target.value)} />
-//             </div>
-//             <div className="flex items-center w-full my-2">
-//                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="tel">Tel.</label>
-//                 <input type="text" required id="tel" name="tel" placeholder="Tel."
-//                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-//                     focus:outline-none focus:border-blue-400 transition duration-300"
-//                     value={tel}
-//                     onChange={(e) => setTel(e.target.value)} />
-//             </div>
-//             <div className="flex items-center w-full my-2">
-//                 <label className="w-1/4 block text-gray-700 pr-2 font-semibold text-[20px]" htmlFor="picture">Picture</label>
-//                 <input type="text" required id="picture" name="picture" placeholder="Google drive URL"
-//                     className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-//                     focus:outline-none focus:border-blue-400 transition duration-300"
-//                     value={picture}
-//                     onChange={(e) => setPicture(e.target.value)} />
-//             </div>
-//             <div className="flex items-center w-full my-2">
-//                 <button type="submit" className="bg-white text-cyan-600 border-2 border-cyan-600 border-opacity-100
-//   font-semibold py-2 px-2 rounded-lg z-3
-//   transform transition-colors duration-300 hover:bg-cyan-600 hover:text-white hover:border-transparent w-full">
-//                     Update Campground
-//                 </button>
-//             </div>
-//             {error && (
-//                 <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded">
-//                     {error}
-//                 </div>
-//             )}
-//         </form>
     )
 }

@@ -39,7 +39,7 @@ export default function UpdateBookingForm({ token }: { token: string }) {
 
     return (
         <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-60
-        text-black bg-zinc-100 w-full pt-[30px] mt-[50px]`}>
+        text-black bg-zinc-100 w-full pt-[30px] mt-[50px] hover:opacity-100 transition-opacity duration-300`}>
             <div className="text-black text-[2vw] text-center ">
                 Update Booking Form
             </div>
@@ -87,7 +87,7 @@ export default function UpdateBookingForm({ token }: { token: string }) {
                             type="submit"
                             className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[5px] py-[10px] 
                             duration-300 hover:bg-indigo-800">
-                            Create This Campground
+                            Update booking
                         </button>
                     </div>
                     {error && (
