@@ -6,28 +6,21 @@ import dayjs, { Dayjs } from "dayjs";
 import { useSession } from "next-auth/react";
 import { FormEvent } from "react";
 import { useState } from "react";
+import { UpdateBookingAction } from "@/action/UpdateBookingAction";
 
-interface Props {
-    token : string
-}
-
-export default function UpdateBookingForm(token:string) {
+export default function UpdateBookingForm() {
     const [id,setId] = useState(""); 
     const [checkInDate,setCheckInDate] = useState<Dayjs|null>(null);
     const [checkOutDate,setCheckOutDate] = useState<Dayjs|null>(null);
 
-    const handleUpdateBooking = async (event: FormEvent<HTMLFormElement>) => {
+    const handleUpdateBooking = async () => {
         try {
-            const res = await updateBooking(id,
-                            dayjs(checkInDate).format('YYYY/MM/DD'),
-                            dayjs(checkInDate).format('YYYY/MM/DD'),
-                            token);
-            console.log('Update Campground successful');
-            // router.push(`/information/${cid}`);
+            console.log("AYO")
+            const res = await UpdateBookingAction(id, 
+                dayjs(checkInDate).format('YYYY/MM/DD'), 
+                dayjs(checkOutDate).format('YYYY/MM/DD'))
         } catch (err) {
-            alert('Update Failed: Not match the constraint')
-            console.log("THERE's ERROR")
-            return false;
+            console.log("Err: ", err)
         }
     }
 
@@ -63,7 +56,7 @@ export default function UpdateBookingForm(token:string) {
                         </label>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DatePicker className="mt-[5px] bg-white" value={checkInDate}
-                        onChange={(e)=>{setCheckInDate(e)}}/>
+                        onChange={(e)=>{setCheckOutDate(e)}}/>
                         </LocalizationProvider>
                     </div>
                 </div>

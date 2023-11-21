@@ -16,7 +16,7 @@ export default async function updateBooking(
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
-            },next: {tags: ['campgrounds']},
+            },next: {tags: ['updateBooking']},
             body: jsonBody,
         });
         if (!response.ok) {

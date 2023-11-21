@@ -28,7 +28,7 @@ export default async function History() {
                     ))}
                 </div>
                 <div>
-                    <UpdateBookingForm token={session.user.token}/>
+                    <UpdateBookingForm/>
                 </div>
             </div>
             {/* {     

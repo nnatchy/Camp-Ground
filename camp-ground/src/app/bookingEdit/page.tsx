@@ -11,8 +11,7 @@ export default async function BookingEdit(){
 
     return (
         <div>
-            <UpdateBooking id={id} bookingDate={booking.bookingDate} checkoutDate={booking.checkoutDate}
-            user={booking.user} token={booking.token}/>
+            <UpdateBooking/>
         </div>
     )
 }
