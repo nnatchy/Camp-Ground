@@ -20,8 +20,8 @@ export default async function CampgroundDetailPage({
   if (!session || !session.user.token) return null
   const profile = session ? await getUserProfile(session.user.token) : null;
   return (
-    <main className={`${styles.campgroundFont} text-white p-5 mt-[50px]`}>
-      <div className="flex mt-[60px]">
+    <main className={`${styles.campgroundFont} w-screen text-white p-5 mt-[50px]`}>
+      <div className="pl-[10%] w-full flex flex-row justify-center mt-[60px]">
         <Image
           src={campgroundDetail.data.picture}
           alt="Campground Picture"
@@ -30,11 +30,11 @@ export default async function CampgroundDetailPage({
           sizes="100vw"
           className="rounded-lg w-[40%] border-4 border-white"
         />
-        <div className="flex-grow flex flex-col justify-start items-center">
-          <div className="text-[30px] lg:text-[40px] mx-5 mb-5 font-bold">
+        <div className="flex-grow flex flex-col justify-start items-center mt-[3%]">
+          <div className="text-[30px] lg:text-[40px] mb-5 font-extrabold">
             {campgroundDetail.data.name}
           </div>
-          <div className="text-[20px] lg:text-[30px] mx-5">
+          <div className="text-[20px] lg:text-[30px] font-light">
             <span className="font-bold pr-4">Location :</span>
             <span>{campgroundDetail.data.address}
               <span>{campgroundDetail.data.province}, {campgroundDetail.data.district}</span></span>

@@ -52,7 +52,8 @@ export default function RegisterForm() {
 
     return (
         <div className="grid place-items-center h-screen">
-            <Image src="/images/sky.jpg"
+            <Image className="blur-sm"
+            src="/images/informationBg.jpg"
             alt="Sky Background"
             fill={true}/>
             <div className="relative shadow-lg p-5 rounded-lg border-t-4 border-cyan-400 bg-white text-black">

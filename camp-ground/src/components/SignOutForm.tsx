@@ -20,7 +20,8 @@ export default function SignOut() {
 
     return (
         <div className="flex items-center justify-center h-screen">
-            <Image src="/images/sky.jpg"
+            <Image className="blur-sm"
+            src="/images/informationBg.jpg"
             alt="Error to load wallpaper"
             fill={true}/>
             <div className="relative z-20 text-center bg-slate-200 
