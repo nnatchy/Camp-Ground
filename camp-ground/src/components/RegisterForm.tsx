@@ -36,7 +36,7 @@ export default function RegisterForm() {
         try {
             const response = await userRegister(name, email, tel, password);
             console.log("Registration successful");
-            router.push("/login");
+            router.push("/auth/signin");
         } catch (err) {
             console.log("Error during registration: ", err);
         }
