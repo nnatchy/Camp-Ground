@@ -11,7 +11,6 @@ export default function SignOut() {
         if (session) {
             await signOut({ redirect: false });
             router.push('/auth/login');
-            // same problem as LogIn
             setTimeout(() => {
                 window.location.reload();
             }, 1000);
@@ -21,17 +20,17 @@ export default function SignOut() {
     return (
         <div className="flex items-center justify-center h-screen">
             <Image className="blur-sm"
-            src="/images/informationBg.jpg"
-            alt="Error to load wallpaper"
-            fill={true}/>
-            <div className="relative z-20 text-center bg-slate-200 
+                src="/images/informationBg.jpg"
+                alt="Error to load wallpaper"
+                fill={true} />
+            <div className="relative z-20 text-center bg-slate-900 
             rounded-[10px] w-[30%] p-[20px]">
                 <h1 className="text-3xl font-bold mb-4">Sign Out</h1>
                 <p className="mb-8">Are you sure you want to sign out?</p>
                 <button
                     onClick={handleSignOut}
-                    className="bg-red-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-red-600 transition-colors"
-                >
+                    className="rounded-lg w-[60%] text-[20px] bg-red-600 text-white ring-slate-600 p-[10px] 
+                    duration-300 hover:bg-rose-800">
                     Sign Out
                 </button>
             </div>

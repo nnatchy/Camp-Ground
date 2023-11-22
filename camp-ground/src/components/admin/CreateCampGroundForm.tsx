@@ -109,7 +109,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                             <label htmlFor="tel" className="ml-[15px] block text-[1.25vw] w-full opacity-60">
                                 Tel.
                             </label>
-                            <input type="text" required id="tel" name="tel" placeholder="Insert Tels"
+                            <input type="text" required id="tel" name="tel" placeholder="Insert Tel"
                             className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
                             ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                             value={tel}

@@ -4,14 +4,13 @@ import { authOptions } from '../api/auth/[...nextauth]/route'
 import getBookings from '@/libs/getBookings'
 import BookingPanel from "@/components/BookingPanel"
 import UpdateBookingForm from "@/components/admin/UpdateBooking"
+import getUserProfile from "@/libs/getUserProfile"
 
-
-export default async function History() {
-    // const bookingItems = useAppSelector(state => state.campgroundSlice.campgroundItems);
-    // const dispatch = useDispatch<AppDispatch>()
+export default async function AllBooking() {
     const session = await getServerSession(authOptions);
     if (!session || !session.user || !session.user.token) return null
     const bookings = await getBookings(session.user.token);
+    const profile = session ? await getUserProfile(session.user.token) : null;
 
     return (
         <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] w-screen'>
@@ -19,7 +18,7 @@ export default async function History() {
                 All Booking History
             </div>
             <div className="w-screen">
-                <div className={`${styles.campgroundFont} w-[100%] flex flex-wrap justify-around text-2xl font-bold`}>
+            <div className={`${styles.campgroundFont} w-[100%] flex flex-wrap justify-center text-2xl font-bold`}>
                     {bookings.data.map((booking: Object, index: number) => (
                         <div key={booking._id} className={`w-[48%] ${index % 2 === 0 ? 'pl-0' : 'pl-4'}`}>
                             <BookingPanel
@@ -28,6 +27,7 @@ export default async function History() {
                                 bookingDate={booking.bookingDate}
                                 checkOutDate={booking.checkoutDate}
                                 user={booking.user}
+                                role={profile?.data.role}
                                 all={true}
                             />
                         </div>

@@ -9,10 +9,11 @@ interface Props {
     bookingDate: Date
     checkOutDate: Date
     user: string
+    role: string
     all: boolean
 }
 
-export default async function BookingPanel({ id, token, bookingDate, checkOutDate, user, all }: Props) {
+export default async function BookingPanel({ id, token, bookingDate, checkOutDate, user, role, all }: Props) {
     const booking = await getBooking(id, token);
 
     return (
@@ -22,7 +23,8 @@ export default async function BookingPanel({ id, token, bookingDate, checkOutDat
             cpName={booking.data.campground.name} 
             bookingDate={bookingDate} 
             checkOutDate={checkOutDate} 
-            user={user} 
+            user={user}
+            role={role}
             all={all} />
         </div>
     )

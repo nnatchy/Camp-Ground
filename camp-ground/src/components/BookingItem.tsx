@@ -12,10 +12,11 @@ interface Props {
     bookingDate: Date
     checkOutDate: Date
     user: string
+    role: string
     all: boolean
 }
 
-export default function BookingItem({ id, token, cpName, bookingDate, checkOutDate, user, all }: Props) {
+export default function BookingItem({ id, token, cpName, bookingDate, checkOutDate, user, role, all }: Props) {
 
     const handleDeleteBooking = async () => {
         try {
@@ -35,7 +36,7 @@ export default function BookingItem({ id, token, cpName, bookingDate, checkOutDa
                         <span className='font-normal pl-5'>{id}</span></div>
                     <div className='flex font-bold text-[20px]'>Campground Name :
                         <span className='font-normal pl-5'>{cpName}</span></div>
-                    {all ?
+                    {all && role == "admin" ?
                         <div className='flex font-bold text-[20px]'>User Id:
                             <span className='font-normal pl-5'>{user}</span></div>
                         : null

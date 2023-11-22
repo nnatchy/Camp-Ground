@@ -12,7 +12,7 @@ export default async function TopMenu() {
 
   return (
     <div
-      className={`${styles.FiraSans} flex justify-start fixed flex-row h-[60px] hover:h-[110px]
+      className={`${styles.FiraSans} flex justify-start fixed flex-row h-[100px]
       top-0 right-0 left-0 z-30 items-center text-[5px] lg:text-[20px] md:text-[15px] sm:text-[10px] bg-opacity-50
       text-white font-normal w-screen backdrop-blur-lg`}
     >
@@ -28,7 +28,7 @@ export default async function TopMenu() {
         <TopMenuItem pageRef="/mybooking" title="My Booking" />
         <TopMenuItem pageRef="/information" title="Information" />
         {profile?.data.role == "admin" ? (
-          <TopMenuItem pageRef="/history" title="History" />
+          <TopMenuItem pageRef="/allbooking" title="All Booking" />
         ) : null}
       </div>
       <div className="lg:w-[25%] md:w-[15%] sm:w-[7%] w-[0%]"></div>
