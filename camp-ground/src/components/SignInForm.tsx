@@ -71,7 +71,7 @@ export default function SignInForm() {
                     </div>
                     <button className="bg-cyan-600 text-white border-2 border-cyan-600 border-opacity-100
   font-semibold py-2 px-2 rounded-lg z-3 
-  transform transition-colors duration-300 hover:bg-white hover:text-cyan-600 cursor-pointer">Login</button>
+  transform transition-colors duration-300 hover:bg-white hover:text-cyan-600 cursor-pointer">Sign In</button>
                     {
                         error && (
                             <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded">
