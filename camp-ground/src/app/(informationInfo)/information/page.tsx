@@ -23,7 +23,7 @@ export default async function CampGround() {
       <Suspense fallback={
         <div className="w-screen h-screen">
           <p className={`${styles.allFont} relative text-[40px] font-bold 
-            text-center mt-[130px] text-white`}>Loading...</p>
+            text-center mt-[130px] text-white dark:text-black`}>Loading...</p>
           <LinearProgress />
         </div>
       }>
