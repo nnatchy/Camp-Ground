@@ -4,6 +4,7 @@ import styles from "@/styles/FontPage.module.css"
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import ThemeToggleButton from "./ThemeToggleButton";
 
 export default function HomePage() {
     const [index, setIndex] = useState(0);
@@ -33,6 +34,7 @@ export default function HomePage() {
                 className="blur-sm saturate-100 opacity-60"
                 alt="Error For Load Home Background"
                 fill={true} />
+
             <div className="relative">
                 <div className=" flex flex-row justify-center">
                     <h1 className="text-[80px]">CAMP GROUND</h1>
@@ -69,8 +71,6 @@ export default function HomePage() {
                         </div>
                     )}
                 </div>
-
-
             </div>
         </div>
     )

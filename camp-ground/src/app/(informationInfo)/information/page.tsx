@@ -20,7 +20,6 @@ export default async function CampGround() {
   console.log("Token:", session.user.token)
   return (
     <div>
-
       <Suspense fallback={
         <div className="w-screen h-screen">
           <p className={`${styles.allFont} relative text-[40px] font-bold 
