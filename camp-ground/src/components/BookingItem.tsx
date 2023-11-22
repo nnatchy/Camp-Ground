@@ -41,7 +41,7 @@ export default function BookingItem({ id, token, cpName, bookingDate, checkOutDa
                             <span className='font-normal pl-5'>{user}</span></div>
                         : null
                     }
-                    <div className='flex font-bold text-[20px]'>BookingDate :
+                    <div className='flex font-bold text-[20px]'>Booking Date :
                         <span className='font-normal pl-5'>{dayjs(bookingDate).format('YYYY/MM/DD')}</span></div>
                     <div className='flex font-bold text-[20px]'>Check Out Date:
                         <span className='font-normal pl-5'>{dayjs(checkOutDate).format('YYYY/MM/DD')}</span></div>
