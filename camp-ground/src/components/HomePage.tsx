@@ -48,7 +48,7 @@ export default function HomePage() {
                 <div className="mt-[25px] flex flex-row items-center  border-5">
                     <Image src={covers[index % 5]}
                         alt="Banner"
-                        className="w-[680px] h-[280px] rounded-[30px] flex flex-row ml-[10px]"
+                        className="w-[680px] h-[320px] rounded-[30px] flex flex-row ml-[10px]"
                         width={1000}
                         height={1000} />
                 </div>

@@ -30,7 +30,7 @@ export default function BookingItem({ id, token, cpName, bookingDate, checkOutDa
 
     return (
         <form action={handleDeleteBooking}>
-            <div className={`${styles.campgroundFont} bg-white rounded-xl w-[100%] pl-5 py-4 text-black mt-[30px]`} >
+            <div className={`${styles.campgroundFont} bg-gray-900 dark:bg-white rounded-xl w-[100%] pl-5 py-4 text-white dark:text-black mt-[30px]`} >
                 <div className="ml-5 space-y-4">
                     <div className='flex font-bold text-[20px]'>Booking id:
                         <span className='font-normal pl-5'>{id}</span></div>

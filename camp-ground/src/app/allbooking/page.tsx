@@ -14,7 +14,7 @@ export default async function AllBooking() {
 
     return (
         <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] w-screen'>
-            <div className={`${styles.campgroundFont} uppercase text-white text-bold text-[40px] transition-transform transform hover:scale-[1.055] duration-300`}>
+            <div className={`${styles.campgroundFont} dark:text-black uppercase text-white text-bold text-[40px] transition-transform transform hover:scale-[1.055] duration-300`}>
                 All Booking History
             </div>
             <div className="w-screen">

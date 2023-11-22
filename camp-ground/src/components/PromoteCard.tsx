@@ -17,7 +17,7 @@ export default function PromoteCard({ picture, topic, detail }: Props) {
 
     return (
         <div
-            className={`${styles.campgroundFont} dark:bg-white dark:text-black w-[200px] rounded-xl overflow-hidden relative ${hovered ? "h-[400px]" : "h-[200px]"}`}
+            className={`${styles.campgroundFont} dark:text-black w-[200px] rounded-xl overflow-hidden relative ${hovered ? "h-[400px]" : "h-[200px]"}`}
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
         >

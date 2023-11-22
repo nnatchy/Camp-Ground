@@ -28,10 +28,10 @@ export default async function CampgroundDetailPage({
           width={0}
           height={0}
           sizes="100vw"
-          className="rounded-lg w-[40%] border-4 border-white dark:border-slate-900"
+          className="rounded-lg w-[40%] dark:border-slate-900"
         />
         <div className="flex-grow flex flex-col justify-start items-center mt-[3%]">
-          <div className="text-[30px] lg:text-[40px] mb-5 font-extrabold">
+          <div className="text-[30px] lg:text-[50px] mb-5 font-extrabold">
             {campgroundDetail.data.name}
           </div>
           <div className="text-[20px] lg:text-[30px] font-light ml-[30px]">
@@ -52,7 +52,7 @@ export default async function CampgroundDetailPage({
 
       {
         (profile?.data.role == "admin") ?
-          <div className="pt-[40px]">
+          <div className="pt-[40px] mt-[100px]">
             <div className={`${styles.Roboto} text-center text-white dark:text-black font-bold text-[3.5vw]`}>
               <h1>👑 Hello Admin 👑</h1>
               <div className="mt-[20px] text-[1vw] text-gray-100 dark:text-gray-900 opacity-80 font-light ">

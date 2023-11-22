@@ -24,7 +24,7 @@ export default async function myBooking() {
     return (
         <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] h-screen'>
             <div className={`${styles.campgroundFont} uppercase font-bold text-[40px] flex transition-transform transform
-            dark:text-black hover:scale-[1.055] duration-300 `}>
+            dark:text-black hover:scale-[1.055] duration-300 text-white`}>
                 {`${session ? session.user?.name : "Not Logged In"} Booking History`} <span className="pl-4"><FaCalendar /></span>
             </div>
             <div className="w-screen">
