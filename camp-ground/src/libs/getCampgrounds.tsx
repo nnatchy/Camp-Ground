@@ -1,7 +1,7 @@
 import { apiBackUrl } from "../constants";
 
 export default async function getCampgrounds() {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 4000));
     const response = await fetch(`${apiBackUrl}/campgrounds`, {next: {tags: ['campgrounds']}})
 
     if (!response.ok) {

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Image from "next/image";
 
-export default function LoginForm() {
+export default function SignInForm() {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [error, setError] = useState<string>("");
@@ -49,7 +49,7 @@ export default function LoginForm() {
             alt="Sky Background"
             fill={true}/>
             <div className="relative shadow-lg p-5 rounded-lg border-t-4 border-cyan-400 bg-white text-black">
-                <h1 className="text-xl font-bold my-4">Log-in to CampGround</h1>
+                <h1 className="text-xl font-bold my-4">Sign-in</h1>
                 <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
                     <input className="w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40 rounded-lg" type="text" placeholder="Email"
                         value={email} onChange={val => setEmail(val.target.value)} />

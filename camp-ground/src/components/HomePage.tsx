@@ -61,7 +61,7 @@ export default function HomePage() {
           font-semibold py-2 px-2 rounded-lg transition-colors duration-300 hover:bg-black 
           hover:text-white hover:border-transparent"
                                 onClick={() => {
-                                    router.push("/auth/login");
+                                    router.push("/auth/signin");
                                 }}
                             >
                                 Sign In / Register Here !
