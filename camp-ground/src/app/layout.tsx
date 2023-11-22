@@ -23,7 +23,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`{inter.className} dark:bg-slate-100`}>
         <ReduxProvider>
           <NextAuthProvider session={session}>
             <TopMenu/>

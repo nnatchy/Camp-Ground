@@ -11,7 +11,7 @@ export default function TopMenuPanel({ role, sessionUser }: { role: string, sess
             <div
                 className={`${styles.FiraSans} flex justify-start fixed flex-row h-[100px]
       top-0 right-0 left-0 z-30 items-center text-[5px] lg:text-[16px] md:text-[15px] sm:text-[10px] bg-opacity-50
-      text-white font-normal w-screen backdrop-blur-lg`}
+      text-white font-normal w-screen backdrop-blur-lg dark:bg-slate-200 dark:text-black`}
             >
                 <Image
                     src="/images/logo.png"

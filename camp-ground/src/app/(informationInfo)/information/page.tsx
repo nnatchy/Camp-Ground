@@ -36,10 +36,10 @@ export default async function CampGround() {
               height={1000} />
           </div>
           <div className={`${styles.Roboto} text-center font-bold relative 
-           text-white text-[3.5vw] mt-[6%] w-screen`}>
+           text-white text-[3.5vw] mt-[6%] w-screen dark:text-black`}>
             <h1>Find Yourself</h1>
             <h1>Campground Outside 🏕️</h1>
-            <div className="mt-[20px] text-[1vw] text-gray-100 opacity-80 font-light ">
+            <div className="mt-[20px] text-[1vw] dark:text-black text-gray-100 opacity-80 font-light ">
               <p>Escape to nature's embrace at our serene campground—where</p>
               <p>memories are made under starlit skies. </p>
             </div>
@@ -66,7 +66,7 @@ export default async function CampGround() {
               height={1000} />
           </div>
 
-          <div className={`${styles.Roboto} text-center text-white font-bold text-[3.5vw]`}>
+          <div className={`${styles.Roboto} dark:text-black text-center text-white font-bold text-[3.5vw]`}>
             <h1>Let Explore The Campground {`&`}</h1>
             <h1>Date That You Want</h1>
           </div>
@@ -74,8 +74,8 @@ export default async function CampGround() {
 
 
 
-        <div className="w-screen px-[50px] mb-[80px]">
-          <div className="mt-[50px] border-white border-[3px] rounded-3xl w-full">
+        <div className="w-screen px-[50px] mb-[80px] dark:bg-slate-100">
+          <div className="mt-[50px] border-white dark:border-black border-[3px] rounded-3xl w-full">
             <CampgroundCatalog campJson={campgrounds} />
           </div>
         </div>
@@ -83,9 +83,9 @@ export default async function CampGround() {
         {
           (profile?.data.role == "admin") ?
             <div>
-              <div className={`${styles.Roboto} text-center text-white font-bold text-[3.5vw]`}>
+              <div className={`${styles.Roboto} dark:text-black text-center text-white font-bold text-[3.5vw]`}>
                 <h1>👑 Hello Admin 👑</h1>
-                <div className="mt-[20px] text-[1vw] text-gray-100 opacity-80 font-light ">
+                <div className="dark:text-black mt-[20px] text-[1vw] text-gray-100 opacity-80 font-light ">
                   <p className="text-[25px] font-semibold mb-5">You can create campground here !</p>
                   <p className="text-[20px] mb-3">The constraints on creating new campground are ...</p>
                   <div className="text-[20px] space-y-3">

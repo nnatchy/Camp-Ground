@@ -37,7 +37,8 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
 
     return (
         <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-70
-            text-black bg-zinc-100 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300`}>
+            text-black bg-zinc-100 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300
+            dark:border-black dark:border-[1px]`}>
             <div className="text-black text-[2vw] text-center ">
                 Create Campground Form
             </div>
@@ -138,7 +139,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                         <button
                             type="submit"
                             className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[10px] py-[10px] 
-                        duration-300 hover:bg-indigo-800 ml-[50px]">
+                        duration-300 hover:bg-indigo-800 ml-[50px] dark:text-black">
                             Create New Campground
                         </button>
                         {error && (
