@@ -29,7 +29,7 @@ export default function HomePage() {
 
     return (
         <div className={`${styles.allFont} flex justify-center items-center 
-        relative w-screen h-screen text-white block`}>
+        relative w-screen h-screen text-white`}>
             <Image src="/images/informationBg.jpg"
                 className="blur-sm saturate-100 opacity-60"
                 alt="Error For Load Home Background"

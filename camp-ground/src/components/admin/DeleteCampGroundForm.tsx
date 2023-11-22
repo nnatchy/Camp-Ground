@@ -14,9 +14,9 @@ export default function DeleteCampgroundForm({ cid, token }: { cid: string, toke
     }
 
     return (
-        <div className={`${styles.campgroundFont} my-[50px] w-full h-[70%] bg-white rounded-[10px] opacity-60
-    text-black bg-zinc-100 pt-[30px] hover:opacity-100 transition-opacity duration-300 relative`}>
-            <div className="text-black text-[2vw] text-center font-semibold">
+        <div className={`${styles.campgroundFont} my-[50px] h-[70%] rounded-[10px] opacity-60 
+        text-black dark:text-white bg-zinc-100 dark:bg-zinc-900 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300 relative`}>
+            <div className="text-black dark:text-slate-100 text-[2vw] text-center font-semibold">
                 Delete Campground Form
             </div>
             <p className="text-center mt-6 text-[30px] font-bold text-red-600">

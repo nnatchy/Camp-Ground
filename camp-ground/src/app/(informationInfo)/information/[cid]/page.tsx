@@ -20,7 +20,7 @@ export default async function CampgroundDetailPage({
   if (!session || !session.user.token) return null
   const profile = session ? await getUserProfile(session.user.token) : null;
   return (
-    <main className={`${styles.campgroundFont} w-screen text-white p-5 mt-[50px]`}>
+    <main className={`${styles.campgroundFont} w-screen text-white p-5 mt-[50px] dark:bg-slate-100 dark:text-black`}>
       <div className="pl-[10%] w-full flex flex-row justify-center mt-[60px]">
         <Image
           src={campgroundDetail.data.picture}
@@ -28,7 +28,7 @@ export default async function CampgroundDetailPage({
           width={0}
           height={0}
           sizes="100vw"
-          className="rounded-lg w-[40%] border-4 border-white"
+          className="rounded-lg w-[40%] border-4 border-white dark:border-slate-900"
         />
         <div className="flex-grow flex flex-col justify-start items-center mt-[3%]">
           <div className="text-[30px] lg:text-[40px] mb-5 font-extrabold">
@@ -53,9 +53,9 @@ export default async function CampgroundDetailPage({
       {
         (profile?.data.role == "admin") ?
           <div className="pt-[40px]">
-            <div className={`${styles.Roboto} text-center text-white font-bold text-[3.5vw]`}>
+            <div className={`${styles.Roboto} text-center text-white dark:text-black font-bold text-[3.5vw]`}>
               <h1>👑 Hello Admin 👑</h1>
-              <div className="mt-[20px] text-[1vw] text-gray-100 opacity-80 font-light ">
+              <div className="mt-[20px] text-[1vw] text-gray-100 dark:text-gray-900 opacity-80 font-light ">
                 <p className="text-[25px] font-semibold mb-5">You can update and delete campground here !</p>
                 <p className="text-[20px] mb-3">The constraints on updating new campground are ...</p>
                 <div className="text-[20px] space-y-3">

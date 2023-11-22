@@ -45,9 +45,9 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
     }
 
     return (
-        <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-60
-        text-black bg-zinc-100 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300 relative`}>
-            <div className="text-black text-[2vw] text-center font-semibold">
+        <div className={`${styles.campgroundFont}  h-[70%] rounded-[10px] opacity-60 
+        text-black dark:text-white bg-zinc-100 dark:bg-zinc-900 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300 relative`}>
+            <div className="text-black dark:text-slate-100 text-[2vw] text-center font-semibold">
                 Update Campground Form
             </div>
             <form action={handleUpdateCampground} className="relative opacity-100 mt-[25px] mr-[40px]">
@@ -55,12 +55,12 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                 <div className="relative opacity-100 ml-[20px] mt-[25px] mr-[40px]">
                     <div className="flex items-center w-full my-2">
                         <div className="w-full">
-                            <label htmlFor="name" className="ml-[15px] block text-[1.25vw] w-full opacity-60">
+                            <label htmlFor="name" className="ml-[15px] block text-[1.25vw] w-full opacity-60 dark:text-slate-100">
                                 Campground Name
                             </label>
                             <input type="text" required id="name" name="name" placeholder="Insert Campground Name"
-                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                            ml-[30px] focus:outline-none indent-3 w-full focus:border-blue-400 transition duration-300" value={name}
+                                className="bg-white dark:bg-slate-900 border-2 border-gray-200 rounded w-full p-2 text-gray-700 dark:text-slate-200  
+                            ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300" value={name}
                                 onChange={(e) => setName(e.target.value)} />
                         </div>
                     </div>
@@ -71,8 +71,8 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                                 Address
                             </label>
                             <input type="text" required id="address" name="address" placeholder="Insert Address"
-                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                            ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
+                                className="bg-white dark:bg-slate-900 border-2 border-gray-200 rounded w-full p-2 text-gray-700 dark:text-slate-200  
+                                ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)} />
                         </div>
@@ -84,8 +84,8 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                                 District
                             </label>
                             <input type="text" required id="district" name="district" placeholder="Insert District"
-                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                            ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
+                                className="bg-white dark:bg-slate-900 border-2 border-gray-200 rounded w-full p-2 text-gray-700 dark:text-slate-200  
+                                ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={district}
                                 onChange={(e) => setDistrict(e.target.value)} />
                         </div>
@@ -97,8 +97,8 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                                 Province
                             </label>
                             <input type="text" required id="province" name="province" placeholder="Insert Province"
-                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                            ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
+                                className="bg-white dark:bg-slate-900 border-2 border-gray-200 rounded w-full p-2 text-gray-700 dark:text-slate-200  
+                                ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={province}
                                 onChange={(e) => setProvince(e.target.value)} />
                         </div>
@@ -110,8 +110,8 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                                 Postal Code
                             </label>
                             <input type="text" required id="postalCode" name="postalCode" placeholder="Insert Postal Code"
-                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                            ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
+                                className="bg-white dark:bg-slate-900 border-2 border-gray-200 rounded w-full p-2 text-gray-700 dark:text-slate-200  
+                                ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={postalCode}
                                 onChange={(e) => setPostalCode(e.target.value)} />
                         </div>
@@ -123,8 +123,8 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                                 Tel.
                             </label>
                             <input type="text" required id="tel" name="tel" placeholder="Insert Tel"
-                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                            ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
+                                className="bg-white dark:bg-slate-900 border-2 border-gray-200 rounded w-full p-2 text-gray-700 dark:text-slate-200  
+                                ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={tel}
                                 onChange={(e) => setTel(e.target.value)} />
                         </div>
@@ -136,8 +136,8 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                                 Picture
                             </label>
                             <input type="text" required id="picture" name="picture" placeholder="Insert Picture URI"
-                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                            ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
+                                className="bg-white dark:bg-slate-900 border-2 border-gray-200 rounded w-full p-2 text-gray-700 dark:text-slate-200  
+                                ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={picture}
                                 onChange={(e) => setPicture(e.target.value)} />
                         </div>

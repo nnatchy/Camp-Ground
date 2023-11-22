@@ -47,40 +47,40 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
     };
 
     return (
-        <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-60
-        text-black bg-zinc-100 w-full pt-[30px] mt-[50px] hover:opacity-100 transition-opacity duration-300`}>
-            <div className="text-black text-[2vw] text-center font-semibold ">
+        <div className={`${styles.campgroundFont}  h-[70%] rounded-[10px] opacity-60 
+        text-black dark:text-white bg-zinc-100 dark:bg-zinc-900 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300 relative`}>
+            <div className="text-black dark:text-slate-100 text-[2vw] text-center font-semibold ">
                 Update Booking Form
             </div>
             <form action={handleUpdateBooking} className="px-[20px] w-full text-black relative opacity-100 mt-[25px] mr-[40px]">
                 <div className="relative opacity-100 ml-[15px] mt-[25px] mr-[40px]">
                     <div className="flex items-center w-full my-2">
                             <div className="w-full">
-                                <label htmlFor="id" className="ml-[15px] block text-[1.25vw] w-full opacity-60">
+                                <label htmlFor="id" className="ml-[15px] block text-[1.25vw] w-full opacity-60 dark:text-slate-100">
                                     Insert the booking_id that you want to edit
                                 </label>
                                 <input type="text" required id="id" name="id" placeholder="Insert Your Booking Id"
-                                className="bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                                ml-[30px] focus:outline-none indent-3 w-full focus:border-blue-400 transition duration-300" 
+                                className="bg-white dark:bg-slate-900 border-2 border-gray-200 rounded w-full p-2 text-gray-700 dark:text-slate-200  
+                                ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={id} onChange={(e) => setId(e.target.value)} />
                         </div>
                     </div>
 
                 <div className="w-full flex flex-row justify-start mt-[20px]">
                         <div className="w-[50%]">
-                            <label htmlFor="checkInDate" className="ml-[15px] block text-[1.25vw] w-full opacity-60">
+                            <label htmlFor="checkInDate" className="ml-[15px] block text-[1.25vw] w-full opacity-60 dark:text-slate-100">
                                 New Check In Date
                             </label>
                             <div className="ml-[30px]">
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker className="w-[100%] mt-[7px] bg-white" value={checkInDate}
+                                    <DatePicker className="w-[100%] mt-[7px] bg-white dark:text-slate-200 dark:bg-slate-100" value={checkInDate}
                                     onChange={(e) => { setCheckInDate(e) }} />
                                 </LocalizationProvider>
                             </div>
                         </div>
 
                         <div className="w-[50%]">
-                            <label htmlFor="checkInDate" className="ml-[15px] block text-[1.25vw] w-full opacity-60">
+                            <label htmlFor="checkInDate" className="ml-[15px] block text-[1.25vw] w-full opacity-60 dark:text-slate-100">
                                 New Check Out Date
                             </label>
                         <div className="ml-[30px]">

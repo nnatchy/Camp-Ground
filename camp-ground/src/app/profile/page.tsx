@@ -12,7 +12,7 @@ export default async function Profile() {
     var createdAt = new Date(profile.data.createdAt)
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center h-screen">
+        <div className="flex flex-col md:flex-row items-center justify-center h-screen dark:bg-slate-100">
             <div className="w-full md:w-1/2 p-4 flex items-center justify-center">
                 <div className="w-[400px] h-[400px]">
                     <Image
@@ -24,7 +24,7 @@ export default async function Profile() {
                     />
                 </div>
             </div>
-            <div className="w-[90%] max-w-xl bg-slate-900 p-6 rounded-lg mt-6 md:ml-6">
+            <div className="w-[90%] max-w-xl bg-slate-900 dark:text-slate-900 dark:bg-cyan-200 p-6 rounded-lg mt-6 md:ml-6 dark:border-blue-700">
                 <h1 className="text-3xl md:text-4xl font-bold mb-4">User Profile</h1>
                 <div className="text-lg space-y-4">
                     <div><span className="font-bold pr-3">Name: </span> {profile.data.name}</div>
