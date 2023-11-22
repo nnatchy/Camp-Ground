@@ -37,7 +37,7 @@ export default function SignInForm() {
                 window.location.reload();
             }, 1000);
         } catch (error) {
-
+            setError("Sign in failed. Account isn't existed.")
         }
     }
 

@@ -39,7 +39,7 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
             }
             await HandleUpdateCampground(cid, name, address, district, province, postalCode, tel, picture, token);
         } catch (err) {
-            setError("Updated Failed")
+            setError("Updated Failed. Please check the constraint.")
             console.log(err)
         }
     }

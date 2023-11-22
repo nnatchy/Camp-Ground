@@ -11,8 +11,7 @@ export async function HandleCreateCampground(name: string, address: string, dist
         console.log(res)
         console.log("Create Campground successful")
     } catch (err) {
-        alert("Not match constraint Ja")
-         console.log("Error during creating booking: ", err)
+        console.log("Error during creating booking: ", err)
     }
     revalidateTag(`campgrounds`)
     revalidatePath(`/information`)

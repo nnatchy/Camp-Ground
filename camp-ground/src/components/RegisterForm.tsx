@@ -38,6 +38,7 @@ export default function RegisterForm() {
             console.log("Registration successful");
             router.push("/auth/signin");
         } catch (err) {
+            setError("Register Failed. Might be because of duplicated email")
             console.log("Error during registration: ", err);
         }
     };

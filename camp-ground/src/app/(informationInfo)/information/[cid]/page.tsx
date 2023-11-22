@@ -34,7 +34,7 @@ export default async function CampgroundDetailPage({
           <div className="text-[30px] lg:text-[40px] mb-5 font-extrabold">
             {campgroundDetail.data.name}
           </div>
-          <div className="text-[20px] lg:text-[30px] font-light">
+          <div className="text-[20px] lg:text-[30px] font-light ml-[30px]">
             <span className="font-bold pr-4">Location :</span>
             <span>{campgroundDetail.data.address}
               <span>{campgroundDetail.data.province}, {campgroundDetail.data.district}</span></span>
@@ -60,6 +60,7 @@ export default async function CampgroundDetailPage({
                 <p className="text-[20px] mb-3">The constraints on updating new campground are ...</p>
                 <div className="text-[20px] space-y-3">
                   <li>Campground Name length can't be more than 50 lengths</li>
+                  <li>Campground Name can't be the same as the existed one</li>
                   <li>Postal code length can't be more than 5 lengths</li>
                   <li>The picture must be in google drive form</li>
                 </div>

@@ -30,7 +30,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
             }
             await HandleCreateCampground(name, address, district, province, postalCode, tel, picture, userToken);
         } catch (err) {
-            setError("Created Failed")
+            setError("Create Failed. Please check the constraint")
             console.log(err)
         }
     }

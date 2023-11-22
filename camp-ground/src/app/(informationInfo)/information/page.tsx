@@ -73,7 +73,7 @@ export default async function CampGround() {
           </div>
         </div>
 
-        
+
 
         <div className="w-screen px-[50px] mb-[80px]">
           <div className="mt-[50px] border-white border-[3px] rounded-3xl w-full">
@@ -91,6 +91,7 @@ export default async function CampGround() {
                   <p className="text-[20px] mb-3">The constraints on creating new campground are ...</p>
                   <div className="text-[20px] space-y-3">
                     <li>Campground Name length can't be more than 50 lengths</li>
+                    <li>Campground Name can't be the same as the existed one</li>
                     <li>Postal code length can't be more than 5 lengths</li>
                     <li>The picture must be in google drive form</li>
                   </div>

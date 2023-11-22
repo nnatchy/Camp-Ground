@@ -14,10 +14,18 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
 
     const handleUpdateBooking = async () => {
         try {
+            const currentDate = dayjs();
+    
             const startDate = dayjs(checkInDate);
             const endDate = dayjs(checkOutDate);
+    
+            if (startDate.isBefore(currentDate) || endDate.isBefore(currentDate)) {
+                setError("Dates cannot be in the past.");
+                return;
+            }
+    
             const differenceInDays = endDate.diff(startDate, 'day');
-
+    
             if (differenceInDays > 3) {
                 setError("The booking duration can't be more than 3 days.");
                 return;
@@ -33,7 +41,7 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
             setError('');
             console.log("Update booking successful");
         } catch (err) {
-            setError('Update error');
+            setError('Update error. Server Failed ?');
             console.log("Err: ", err);
         }
     };
@@ -41,7 +49,7 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
     return (
         <div className={`${styles.campgroundFont} w-[600px] h-[70%] bg-white rounded-[10px] opacity-60
         text-black bg-zinc-100 w-full pt-[30px] mt-[50px] hover:opacity-100 transition-opacity duration-300`}>
-            <div className="text-black text-[2vw] text-center ">
+            <div className="text-black text-[2vw] text-center font-semibold ">
                 Update Booking Form
             </div>
             <form action={handleUpdateBooking} className="px-[20px] w-full text-black relative opacity-100 mt-[25px] mr-[40px]">
@@ -90,12 +98,13 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
                             duration-300 hover:bg-indigo-800">
                             Update booking
                         </button>
-                    </div>
-                    {error && (
-                        <div className="bg-red-500 text-white w-fit text-[20px] py-1 px-3 rounded">
+                        {error && (
+                        <div className="bg-red-500 text-white w-fit text-[20px] py-1 px-3 rounded mt-5">
                             {error}
                         </div>
                     )}
+                    </div>
+                    
                 </div>
             </form>
         </div>
