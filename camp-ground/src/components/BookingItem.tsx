@@ -20,7 +20,7 @@ export default function BookingItem({ id, token, cpName, bookingDate, checkOutDa
 
     const handleDeleteBooking = async () => {
         try {
-            await DeleteBookingAction(id, token)
+            await DeleteBookingAction(id, token, all)
             console.log('Delete Booking successful')
         } catch (err) {
             console.log(err)

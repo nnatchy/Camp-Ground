@@ -4,7 +4,7 @@ import { redirect } from "next/navigation"
 import deleteBooking from "@/libs/deleteBooking"
 
 
-export async function DeleteBookingAction(bid: string, token: string){
+export async function DeleteBookingAction(bid: string, token: string, path: boolean){
     try {
         const res = await deleteBooking(bid, token)
         console.log(res)
@@ -13,7 +13,11 @@ export async function DeleteBookingAction(bid: string, token: string){
          console.log("Error during creating booking: ", err)
     }
     revalidateTag(`bookings`)
-    redirect(`/mybooking`)
+    if (path) {
+        redirect(`/allbooking`)
+    } else {
+        redirect(`/mybooking`)
+    }
 }
 
 

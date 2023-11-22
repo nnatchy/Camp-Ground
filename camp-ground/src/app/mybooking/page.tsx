@@ -40,7 +40,7 @@ export default async function myBooking() {
                                             checkOutDate={booking.checkoutDate}
                                             user={booking.user}
                                             role="user"
-                                            all={true}
+                                            all={false}
                                         /> : null
                                 }
                             </div>
@@ -50,7 +50,7 @@ export default async function myBooking() {
                 </div>
 
                 <div className="my-[50px] px-[90px]">
-                    <UpdateBookingForm token={session.user.token} />
+                    <UpdateBookingForm token={session.user.token} path={false}/>
                 </div>
             </div>
         </main>

@@ -35,7 +35,7 @@ export default async function AllBooking() {
                 </div>
 
                 <div className="my-[50px] px-[90px]">
-                    <UpdateBookingForm token={session.user.token} />
+                    <UpdateBookingForm token={session.user.token} path={true}/>
                 </div>
             </div>
             {/* {     

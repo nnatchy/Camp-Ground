@@ -23,7 +23,7 @@ export default function SignOut() {
                 src="/images/informationBg.jpg"
                 alt="Error to load wallpaper"
                 fill={true} />
-            <div className="relative z-20 text-center bg-slate-900 
+            <div className="relative z-20 text-center text-black bg-white
             rounded-[10px] w-[30%] p-[20px]">
                 <h1 className="text-3xl font-bold mb-4">Sign Out</h1>
                 <p className="mb-8">Are you sure you want to sign out?</p>

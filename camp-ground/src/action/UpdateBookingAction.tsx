@@ -4,7 +4,7 @@ import { redirect } from "next/navigation"
 import updateBooking from "@/libs/updateBooking"
 
 
-export async function UpdateBookingAction(id: string, bookingDate: string, checkoutDate: string, token: string){
+export async function UpdateBookingAction(id: string, bookingDate: string, checkoutDate: string, token: string,path: boolean){
     console.log(token)
     try {
         console.log(id, bookingDate, checkoutDate)
@@ -16,7 +16,11 @@ export async function UpdateBookingAction(id: string, bookingDate: string, check
     }
     revalidateTag(`bookings/${id}`)
     revalidateTag(`bookings`)
-    redirect("/mybooking")
+    if (path){
+        redirect("/allbooking")
+    } else {
+        redirect("/mybooking")
+    }
 }
 
 

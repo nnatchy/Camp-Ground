@@ -6,7 +6,7 @@ import { useState } from "react";
 import { UpdateBookingAction } from "@/action/UpdateBookingAction";
 import styles from "@/styles/FontPage.module.css"
 
-export default function UpdateBookingForm({ token }: { token: string }) {
+export default function UpdateBookingForm({ token,path }: { token: string,path:boolean }) {
     const [id, setId] = useState("");
     const [checkInDate, setCheckInDate] = useState<Dayjs | null>(null);
     const [checkOutDate, setCheckOutDate] = useState<Dayjs | null>(null);
@@ -27,7 +27,8 @@ export default function UpdateBookingForm({ token }: { token: string }) {
                 id,
                 startDate.format('YYYY/MM/DD'),
                 endDate.format('YYYY/MM/DD'),
-                token
+                token,
+                path
             );
             setError('');
             console.log("Update booking successful");
