@@ -3,10 +3,11 @@ import Image from "next/image";
 import styles from "@/styles/FontPage.module.css"
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
     const [index, setIndex] = useState(0);
-
+    const router = useRouter();
     useEffect(() => {
         const timer = setTimeout(() => {
             setIndex(index + 1);
@@ -49,11 +50,26 @@ export default function HomePage() {
                         width={1000}
                         height={1000} />
                 </div>
-                <div className="text-white font-medium text-[30px] text-center pt-4">
-                    {
-                        session ? <span>Welcome {session.user?.name} to our website !</span> : 'Please sign in to our website to see our amazing contents !'
-                    }
+                <div className="text-white font-medium text-[30px] text-center pt-4 relative">
+                    {session ? (
+                        <span>Welcome {session.user?.name} to our website !</span>
+                    ) : (
+                        <div className="flex flex-col space-y-3">
+                            <p>Please sign in to our website to see our amazing contents !</p>
+                            <button
+                                className="bg-slate-950 text-gray-300 border-2 border-white border-opacity-100
+          font-semibold py-2 px-2 rounded-lg transition-colors duration-300 hover:bg-black 
+          hover:text-white hover:border-transparent"
+                                onClick={() => {
+                                    router.push("/auth/login");
+                                }}
+                            >
+                                Sign In / Register Here !
+                            </button>
+                        </div>
+                    )}
                 </div>
+
 
             </div>
         </div>

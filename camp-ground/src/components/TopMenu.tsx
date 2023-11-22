@@ -32,6 +32,8 @@ export default async function TopMenu() {
         ) : null}
       </div>
       <div className="lg:w-[25%] md:w-[15%] sm:w-[7%] w-[0%]"></div>
+      <TopMenuItem pageRef="/profile" title="Profile" />
+      <div className="pr-[40px]"></div>
       <div className="flex items-center">
         {session ? (
           <TopMenuItem

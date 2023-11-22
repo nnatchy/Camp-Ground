@@ -22,8 +22,8 @@
     font-family: Comfortaa;
 }
 
-.FiraSans{
-    font-family : FiraSans;
+.FiraSans {
+    font-family: 'Fira Sans', Comfortaa, sans-serif; /* Use the correct font family name */
 }
 
 .Roboto{

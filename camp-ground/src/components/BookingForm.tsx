@@ -113,7 +113,7 @@ export default function BookingForm({ token }: { token: string }) {
                             </div>
 
 
-                            <div className="pt-[40px] space-x-[20px] mt-[20px] flex flex-col items-center">
+                            <div className="pt-[40px] space-x-[20px] mt-[5px] flex flex-col items-center">
                                 <button
                                     type="submit"
                                     className="opacity-100 rounded-full w-full text-[20px] bg-[#ffa900] text-white ring-slate-600 p-[5px] py-[10px] duration-300 hover:bg-indigo-800"
