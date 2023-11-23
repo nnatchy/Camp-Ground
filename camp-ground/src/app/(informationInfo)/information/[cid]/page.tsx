@@ -9,6 +9,7 @@ import styles from "@/styles/FontPage.module.css"
 import { revalidateTag } from "next/cache";
 import { Suspense } from "react";
 import { LinearProgress } from "@mui/material";
+import { redirect } from "next/navigation"
 
 export default async function CampgroundDetailPage({
   params,
@@ -19,7 +20,9 @@ export default async function CampgroundDetailPage({
   revalidateTag(`/campground/${params.cid}`)
   const campgroundDetail = await getCampground(params.cid);
   const session = await getServerSession(authOptions);
-  if (!session || !session.user.token) return null
+  if (!session || !session.user || !session.user.token) {
+    redirect('/');
+  }
   const profile = session ? await getUserProfile(session.user.token) : null;
   return (
     <main className={`${styles.campgroundFont} w-screen text-white p-5 mt-[50px] dark:bg-slate-100 dark:text-black`}>
