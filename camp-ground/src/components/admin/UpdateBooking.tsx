@@ -62,7 +62,7 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
                                     Insert the booking_id that you want to edit
                                 </label>
                                 <input type="text" required id="id" name="id" placeholder="Insert Your Booking Id"
-                                className="bg-black text-white dark:bg-white border-2 border-gray-200 rounded w-full p-2
+                                className="bg-black text-white dark:bg-white dark:text-black border-2 border-gray-200 rounded w-full p-2
                                 ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={id} onChange={(e) => setId(e.target.value)} />
                         </div>
@@ -73,7 +73,7 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
                             <label htmlFor="checkInDate" className="ml-[15px] block text-[1.25vw] w-full opacity-60 ">
                                 New Check In Date
                             </label>
-                            <div className="ml-[30px] border-2 border-gray-200 text-gray-700">
+                            <div className="ml-[30px] border-2 border-gray-200">
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                                     <DatePicker className="w-[100%] mt-[7px] bg-[#6B6B6B] dark:bg-white text-white"  value={checkInDate}
                                     onChange={(e) => { setCheckInDate(e) }} />
