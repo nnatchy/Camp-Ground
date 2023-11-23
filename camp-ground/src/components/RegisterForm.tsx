@@ -19,12 +19,21 @@ export default function RegisterForm() {
 
     const router = useRouter();
 
+    const isValidEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      };
+
     const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (!name || !email || !tel || !password || !confirmPassword) {
             setError("All fields are necessary");
             return;
         }
+        if (!isValidEmail(email)) {
+            setError("Please enter a valid email address");
+            return;
+          }
         if (password.length < 6) {
             setError("Password has to be at least 6 characters long");
             return;
