@@ -36,8 +36,8 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
     }
 
     return (
-        <div className={`${styles.campgroundFont} w-[600px] h-[70%] dark:bg-white bg-black border-white border-[1px] rounded-[10px] opacity-70
-            text-black bg-zinc-100 w-full pt-[30px] hover:opacity-100 transition-opacity duration-300
+        <div className={`${styles.campgroundFont} h-[70%] dark:bg-white bg-black border-white border-[1px] rounded-[10px] opacity-70
+            text-black  w-full pt-[30px] hover:opacity-100 transition-opacity duration-300
             dark:border-black dark:border-[1px]`}>
             <div className="dark:text-black text-white text-[2vw] text-center ">
                 Create Campground Form
@@ -51,8 +51,8 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                                 Campground Name
                             </label>
                             <input type="text" required id="name" name="name" placeholder="Insert Campground Name"
-                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
-                            ml-[30px] focus:outline-none indent-3 w-full focus:border-blue-400 transition duration-300" value={name}
+                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 dark:text-gray-700 text-white
+                            ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300" value={name}
                                 onChange={(e) => setName(e.target.value)} />
                         </div>
                     </div>
@@ -63,7 +63,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                                 Address
                             </label>
                             <input type="text" required id="address" name="address" placeholder="Insert Address"
-                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 dark:text-gray-700 text-white
                             ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)} />
@@ -76,7 +76,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                                 District
                             </label>
                             <input type="text" required id="district" name="district" placeholder="Insert District"
-                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 dark:text-gray-700 text-white
                             ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={district}
                                 onChange={(e) => setDistrict(e.target.value)} />
@@ -89,7 +89,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                                 Province
                             </label>
                             <input type="text" required id="province" name="province" placeholder="Insert Province"
-                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 dark:text-gray-700 text-white 
                             ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={province}
                                 onChange={(e) => setProvince(e.target.value)} />
@@ -102,7 +102,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                                 Postal Code
                             </label>
                             <input type="text" required id="postalCode" name="postalCode" placeholder="Insert Postal Code"
-                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 dark:text-gray-700 text-white 
                             ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={postalCode}
                                 onChange={(e) => setPostalCode(e.target.value)} />
@@ -115,7 +115,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                                 Tel.
                             </label>
                             <input type="text" required id="tel" name="tel" placeholder="Insert Tel"
-                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 dark:text-gray-700 text-white 
                             ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={tel}
                                 onChange={(e) => setTel(e.target.value)} />
@@ -128,7 +128,7 @@ export default function CreateCampgroundForm({ userToken }: { userToken: string 
                                 Picture
                             </label>
                             <input type="text" required id="picture" name="picture" placeholder="Insert Picture URI"
-                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 dark:text-gray-700 text-white
                             ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={picture}
                                 onChange={(e) => setPicture(e.target.value)} />

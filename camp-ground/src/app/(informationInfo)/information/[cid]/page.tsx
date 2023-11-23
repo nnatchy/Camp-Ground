@@ -7,6 +7,8 @@ import UpdateCampGroundForm from "@/components/admin/UpdateCampGroundForm";
 import DeleteCampgroundForm from "@/components/admin/DeleteCampGroundForm";
 import styles from "@/styles/FontPage.module.css"
 import { revalidateTag } from "next/cache";
+import { Suspense } from "react";
+import { LinearProgress } from "@mui/material";
 
 export default async function CampgroundDetailPage({
   params,
@@ -21,6 +23,13 @@ export default async function CampgroundDetailPage({
   const profile = session ? await getUserProfile(session.user.token) : null;
   return (
     <main className={`${styles.campgroundFont} w-screen text-white p-5 mt-[50px] dark:bg-slate-100 dark:text-black`}>
+      <Suspense fallback={
+                <div className="w-screen h-screen">
+                    <p className={`${styles.allFont} relative text-[40px] font-bold 
+            text-center mt-[130px] text-white dark:text-black`}>Loading...</p>
+                    <LinearProgress />
+                </div>
+            }>
       <div className="pl-[10%] w-full flex flex-row justify-center mt-[60px]">
         <Image
           src={campgroundDetail.data.picture}
@@ -83,6 +92,7 @@ export default async function CampgroundDetailPage({
           :
           null
       }
+      </Suspense>
     </main>
   );
 }

@@ -5,6 +5,8 @@ import getBookings from '@/libs/getBookings'
 import BookingPanel from "@/components/BookingPanel"
 import UpdateBookingForm from "@/components/admin/UpdateBooking"
 import getUserProfile from "@/libs/getUserProfile"
+import { Suspense } from "react"
+import { LinearProgress } from "@mui/material"
 
 export default async function AllBooking() {
     const session = await getServerSession(authOptions);
@@ -14,6 +16,13 @@ export default async function AllBooking() {
 
     return (
         <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] w-screen'>
+            <Suspense fallback={
+                <div className="w-screen h-screen">
+                    <p className={`${styles.allFont} relative text-[40px] font-bold 
+            text-center mt-[130px] text-white dark:text-black`}>Loading...</p>
+                    <LinearProgress />
+                </div>
+            }>
             <div className={`${styles.campgroundFont} dark:text-black uppercase text-white text-bold text-[40px] transition-transform transform hover:scale-[1.055] duration-300`}>
                 All Booking History
             </div>
@@ -38,38 +47,7 @@ export default async function AllBooking() {
                     <UpdateBookingForm token={session.user.token} path={true}/>
                 </div>
             </div>
-            {/* {     
-                bookingItems.length === 0 ?
-                    <div className={`${styles.campgroundFont} text-2xl font-bold`}>
-                        <div>
-                            <Image className="w-[400px] h-[400px] mt-[100px]"
-                            src="/images/dontKnow.png"
-                            alt="Error to load picture"
-                            width={1000}
-                            height={1000}/>
-                        </div>
-                    </div>
-                    :
-                    bookingItems.map((item) => (
-                        <div className={`${styles.campgroundFont} bg-white rounded-xl w-[90%] pl-5 py-4 text-black`} 
-                        key={item.campgroundId}>
-                            <div className='flex font-bold text-[20px]'>Campground Name : 
-                            <span className='font-normal pl-5'>{item.campgroundName}</span></div>
-                            <div className='flex font-bold text-[20px]'>checkIn Date : 
-                            <span className='font-normal pl-5'>{item.checkInDate}</span></div>
-                            <div className='flex font-bold text-[20px]'>checkOut Date : 
-                            <span className='font-normal pl-5'>{item.checkOutDate}</span></div>
-
-                            <button
-                                className='bg-red-500 text-white border-2 border-red-800 border-opacity-100
-                                font-semibold py-2 px-6 rounded-lg z-3
-                                transform transition-colors duration-300 hover:bg-rose-800  hover:border-white
-                                p-3 mt-2'
-                                onClick={() => { dispatch(removeBooking(item)) }}
-                            >Cancel Booking</button>
-                        </div>
-                    ))
-            } */}
+            </Suspense>
         </main>
     )
 }

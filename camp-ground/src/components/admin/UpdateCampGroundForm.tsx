@@ -37,6 +37,10 @@ export default function UpdateCampGroundForm({ cid, token, cName, cAddress, cPro
                 setError("Postal code cannot be more than 5 digits");
                 return
             }
+            if (!picture.includes("https://drive.google.com")) {
+                setError("Invalid Picture URI");
+                return;
+            }
             await HandleUpdateCampground(cid, name, address, district, province, postalCode, tel, picture, token);
         } catch (err) {
             setError("Updated Failed. Please check the constraint.")

@@ -5,6 +5,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
 import { UpdateBookingAction } from "@/action/UpdateBookingAction";
 import styles from "@/styles/FontPage.module.css"
+import stylesDate from "@/styles/stylesDate.module.css"
 
 export default function UpdateBookingForm({ token,path }: { token: string,path:boolean }) {
     const [id, setId] = useState("");
@@ -61,7 +62,7 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
                                     Insert the booking_id that you want to edit
                                 </label>
                                 <input type="text" required id="id" name="id" placeholder="Insert Your Booking Id"
-                                className="bg-black dark:bg-white border-2 border-gray-200 rounded w-full p-2 text-gray-700 
+                                className="bg-black text-white dark:bg-white border-2 border-gray-200 rounded w-full p-2
                                 ml-[30px] focus:outline-none indent-3 focus:border-blue-400 transition duration-300"
                                 value={id} onChange={(e) => setId(e.target.value)} />
                         </div>
@@ -74,7 +75,7 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
                             </label>
                             <div className="ml-[30px] border-2 border-gray-200 text-gray-700">
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                    <DatePicker className="w-[100%] mt-[7px] bg-black dark:bg-white"  value={checkInDate}
+                                    <DatePicker className="w-[100%] mt-[7px] bg-[#6B6B6B] dark:bg-white text-white"  value={checkInDate}
                                     onChange={(e) => { setCheckInDate(e) }} />
                                 </LocalizationProvider>
                             </div>
@@ -86,7 +87,7 @@ export default function UpdateBookingForm({ token,path }: { token: string,path:b
                             </label>
                         <div className="ml-[30px] border-gray-200 border-2 text-gray-700">
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DatePicker className="w-[100%] mt-[7px] bg-black dark:bg-white" value={checkOutDate}
+                                <DatePicker className="w-[100%] mt-[7px] bg-[#6B6B6B] dark:bg-white" value={checkOutDate}
                                 onChange={(e) => { setCheckOutDate(e) }} />
                             </LocalizationProvider>
                         </div>

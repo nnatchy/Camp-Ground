@@ -27,6 +27,7 @@ export default function BookingForm({ token }: { token: string }) {
 
     const handleAction = async () => {
         try {
+            setError('');
             const currentDate = dayjs();
     
             const startDate = dayjs(checkInDate);

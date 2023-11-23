@@ -6,6 +6,8 @@ import BookingPanel from "@/components/BookingPanel"
 import UpdateBookingForm from "@/components/admin/UpdateBooking"
 import { FaCalendar } from "react-icons/fa"
 import getUserProfile from "@/libs/getUserProfile"
+import { Suspense } from "react"
+import { LinearProgress } from "@mui/material"
 
 export default async function myBooking() {
     // const bookingItems = useAppSelector(state => state.campgroundSlice.campgroundItems);
@@ -23,6 +25,13 @@ export default async function myBooking() {
 
     return (
         <main className='w-[100%] flex flex-col items-center space-y-4 mt-[150px] h-screen'>
+            <Suspense fallback={
+                <div className="w-screen h-screen">
+                    <p className={`${styles.allFont} relative text-[40px] font-bold 
+            text-center mt-[130px] text-white dark:text-black`}>Loading...</p>
+                    <LinearProgress />
+                </div>
+            }>
             <div className={`${styles.campgroundFont} uppercase font-bold text-[40px] flex transition-transform transform
             dark:text-black hover:scale-[1.055] duration-300 text-white`}>
                 {`${session ? session.user?.name : "Not Logged In"} Booking History`} <span className="pl-4"><FaCalendar /></span>
@@ -51,9 +60,10 @@ export default async function myBooking() {
                 </div>
 
                 <div className="my-[50px] px-[90px]">
-                    <UpdateBookingForm token={session.user.token} path={false}/>
+                    <UpdateBookingForm token={session.user.token} path={false} />
                 </div>
             </div>
+            </Suspense>
         </main>
     )
 }
